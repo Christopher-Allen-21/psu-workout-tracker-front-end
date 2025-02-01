@@ -1,6 +1,7 @@
 import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import UserModel from "./models/user.js"
 
 const app = express()
 
@@ -20,48 +21,48 @@ mongoose.connect(MONGOURL).then(() => {
     console.log(error)
 })
 
-const userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    birthDate: String,
-    email: String,
-    height: Number,
-    weight: Number
-}, 
-{
-    collection : 'Users'
-})
-
-const UserModel = mongoose.model("users", userSchema)
 
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World from Express!')
+    res.send('Hello World from Express and MongoDb!')
 })
 
 app.get('/users', async(req, res) => {
-    const userData = await UserModel.find()
-    res.status(200).send({
-        userData
-    })
-})
-
-app.get('/users/:id', (req, res) => {
-    let userToReturn = null
-
-    for(let user of users) {
-        if(user.id.toString() == req.params.id) {
-            userToReturn = user
-        }
+    try {
+        const user = await UserModel.find()
+        res.status(200).send({
+            user
+        })
     }
-
-    res.status(200).send({
-        userToReturn
-    })
+    catch {
+        res.status(500).send({
+            message: "An error occurred"
+        })
+    }
 })
+
+app.get('/users/:id', async(req, res) => {
+    const id = req.params.id
+
+    try {
+        const user = await UserModel.findById(id)
+        res.status(200).send({
+            user
+        })
+    }
+    catch {
+        res.status(404).send({
+            message: "User not found"
+        })
+    }
+})
+
+
 
 app.post('/users/:id', (req, res) => {
+    const user = req.body
+
     if(!res.body) {
         res.status(400).send({
             message: 'No User provided'
@@ -73,10 +74,15 @@ app.post('/users/:id', (req, res) => {
     })
 })
 
-// to run "node index.js" or "npm start" (npm start defined in package.json)
-// http://localhost:3000/
+
 
 /*
+
+to run "node index.js" or "npm start" (npm start defined in package.json)
+http://localhost:3000/
+
+Tutorial to connect:
+youtube.com/watch?v=30p9QfybWZg
 
 Links for when Canvas crashes:
 https://psu.instructure.com/courses/2383057/pages/instantiating-a-mern-architecture?module_item_id=43085873
