@@ -54,3 +54,38 @@
 - swagger.yaml
   - ![image](https://github.com/user-attachments/assets/3d62324c-ce5f-4773-aec9-238a2327c89f)
     - Defines how Swagger UI will appear
+   
+# Functionality Demo
+
+- GET Request
+  - ![image](https://github.com/user-attachments/assets/46e105a0-4e5b-4d39-94c5-d4ff54d0cdc3)
+  - ![image](https://github.com/user-attachments/assets/14649ccd-bb4e-44c4-8134-85f770226325)
+  - ![image](https://github.com/user-attachments/assets/34ae6054-2440-4aec-a724-e5154cb50dc4)
+- POST Request
+  - ![image](https://github.com/user-attachments/assets/0dcd8df0-a9bb-409a-ac1d-508ed2d386a1)
+  - ![image](https://github.com/user-attachments/assets/2f8b58fa-04ec-43f5-a717-d0e740e01908)
+  - ![image](https://github.com/user-attachments/assets/f37d7c13-007f-455d-970c-c1daf51e9854)
+- PUT Request
+  - ![image](https://github.com/user-attachments/assets/0b917626-1877-4ab3-a637-2cb55d6546ea)
+  - ![image](https://github.com/user-attachments/assets/3128ad5f-9049-4170-8957-47da479755b6)
+  - ![image](https://github.com/user-attachments/assets/94aba0c5-a818-4711-83dd-06fcea2cf85b)
+- DELETE
+  -   ![image](https://github.com/user-attachments/assets/5a929cb7-a1d3-44f7-a13f-6087fd47acdf)
+  -   ![image](https://github.com/user-attachments/assets/f21a02b3-1c6a-4244-be1b-df24604048cb)
+  -   ![image](https://github.com/user-attachments/assets/0c301f49-918a-406f-bacc-ab6875eb2d08)
+-Swagger UI
+  - ![image](https://github.com/user-attachments/assets/68249759-10ce-4fc4-bd49-55f1c4492744)
+  - ![image](https://github.com/user-attachments/assets/95b660ec-4836-4691-aea1-6ed0f7e69c3e)
+  - ![image](https://github.com/user-attachments/assets/ec5d5f84-e583-439b-9a06-e5e794d97193)
+  - ![image](https://github.com/user-attachments/assets/1aa23ac1-c5b9-491f-bc3a-95a2372f2f75)
+  - ![image](https://github.com/user-attachments/assets/7e2acca9-4041-4a0b-ac34-b320c286188d)
+  - ![image](https://github.com/user-attachments/assets/4dac1106-d436-48a7-92b3-206418710d63)
+
+
+
+
+
+
+
+
+ 
