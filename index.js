@@ -16,7 +16,9 @@ dotenv.config()
 const PORT = process.env.PORT || 7000
 const MONGO_URL = process.env.MONGO_URL
 
-app.use('/api-docs', express.json(), swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+app.use( express.json())
+
 
 mongoose.connect(MONGO_URL).then(() => {
     console.log("Db is connected successfully")
@@ -113,7 +115,7 @@ app.delete('/users/:id', async(req, res) => {
     try {
         const userToDelete = await UserModel.findById(id)
         await UserModel.deleteOne(userToDelete)
-        res.status(200).send({
+        res.status(204).send({
             message: "User deleted successfully."
         })
     }

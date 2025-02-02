@@ -9,9 +9,115 @@ paths:
       summary: Returns a greeting
       responses:
         200:
-          description: greeting response
+          description: Greeting response
           content:
             application/json:
               schema:
                 type: string
                 example: Hello World from Express and MongoDb!
+  /users:
+    get:
+      summary: Returns all users
+      responses:
+        200:
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                example: [{"_id": "679e989ab30d21c6a7218f67","firstName": "Robert","lastName": "Allen","birthDate": "05/22/1998","email": "rallen@yahoo.com", "height": 68,"weight": 170}]
+        500:
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: An error has occurred {error}.
+    post:
+        summary: Creates and returns a new user
+        responses:
+          201:
+            description: New user
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example: {"_id": "679e989ab30d21c6a7218f67","firstName": "Robert","lastName": "Allen","birthDate": "05/22/1998","email": "rallen@yahoo.com", "height": 68,"weight": 170}
+          500:
+            description: Server error
+            content:
+              application/json:
+                schema:
+                  type: string
+                  example: An error has occurred {error}.
+  /users/{id}:
+    get:
+      summary: Returns a single user with matching id
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Single user
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {"_id": "679e989ab30d21c6a7218f67","firstName": "Robert","lastName": "Allen","birthDate": "05/22/1998","email": "rallen@yahoo.com", "height": 68,"weight": 170}
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: User not found {error}.
+    put:
+        summary: Updates and returns an existing user
+        parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        responses:
+          201:
+            description: Updated user
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example: {"_id": "679e989ab30d21c6a7218f67","firstName": "Robert","lastName": "Allen","birthDate": "05/22/1998","email": "rallen@yahoo.com", "height": 68,"weight": 170}
+          404:
+            description: User not found
+            content:
+              application/json:
+                schema:
+                  type: string
+                  example: User not found {error}.
+    delete:
+        summary: Deletes an existing user
+        parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        responses:
+          204:
+            description: Deleted user message
+            content:
+              application/json:
+                schema:
+                  type: string
+                  example: User deleted successfully.
+          404:
+            description: User not found
+            content:
+              application/json:
+                schema:
+                  type: string
+                  example: User not found {error}.
+                
