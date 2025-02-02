@@ -1,6 +1,6 @@
 # PSU Masters Sample Backend/API
 
-- **Objective** - to create an implementation of a sample API using Express, MongoDb, and Swagger
+- **Objective** - Implementat a sample API using Express, MongoDb, and Swagger
 
 # To Run
 
@@ -17,3 +17,10 @@
 - **npm install --save-dev nodemon** - installs nodemon
 - **npm install yamljs** - installs yaml
 - **npm install swagger-ui-express** - installs swagger UI
+
+# Additional Resources
+
+- Tutorial to setup Express and MongoDb
+  - youtube.com/watch?v=30p9QfybWZg/
+- Mongoose queries
+  - https://www.geeksforgeeks.org/mongoose-queries/

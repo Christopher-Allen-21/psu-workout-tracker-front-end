@@ -44,7 +44,7 @@ app.get('/users', async(req, res) => {
     } 
     catch (error) {
         res.status(500).send({
-            message: `An error occurred: ${error}`
+            message: `${error}`
         })
     }
 })
@@ -54,86 +54,94 @@ app.get('/users/:id', async(req, res) => {
 
     try {
         const user = await UserModel.findById(id)
-        res.status(200).send({
-            user
-        })
+        if(user) {
+            res.status(200).send({
+                user
+            })
+        }
+        else {
+            res.status(404).send({
+                message: "User not found"
+            })
+        }
     }
-    catch {
-        res.status(404).send({
-            message: "User not found."
+    catch (error){
+        res.status(500).send({
+            message: `${error}`
         })
     }
 })
 
-
-
 app.post('/users', async(req, res) => {
-    if(!req.body) {
-        res.status(400).send({
-            message: "Bad request. No user provided."
-        }) 
-    }
-    else {
-        const newUser = new UserModel({ ...req.body })
+    const newUser = new UserModel({ ...req.body })
 
-        try {
-            const insertedUser = await newUser.save()
-            res.status(201).json(insertedUser)
-        }
-        catch {
-            res.status(500).send({
-                 message: `An error occurred: ${error}`
+    try {
+        const insertedUser = await newUser.save()
+        res.status(201).json(insertedUser)
+    }
+    catch (error) {
+        if(error instanceof mongoose.Error.ValidationError) {
+            res.status(400).send({
+                message: `${error}`
             })
         }
-    } 
+        res.status(500).send({
+            message: `${error}`
+        })
+    }
 })
     
 app.put('/users/:id', async(req, res) => {
     const id = req.params.id
 
     try {
-        await UserModel.findByIdAndUpdate(id, req.body)
-        const updatedUser = await UserModel.findById(id)
-        res.status(200).send({
-            updatedUser
-        })
+        const user = await UserModel.findById(id)
+
+        if(user) {
+            await UserModel.findByIdAndUpdate(id, req.body)
+            const updatedUser = await UserModel.findById(id)
+            res.status(200).send({
+                updatedUser
+            })
+        }
+        else {
+            res.status(404).send({
+                message: "User not found"
+            })
+        }
     }
     catch (error) {
-        res.status(404).send({
-            message: `User not found ${error}`
+        if(error instanceof mongoose.Error.ValidationError) {
+            res.status(400).send({
+                message: `${error}`
+            })
+        }
+        res.status(500).send({
+            message: `${error}`
         })
     }
 })
 
-    
 app.delete('/users/:id', async(req, res) => {
     const id = req.params.id
 
     try {
         const userToDelete = await UserModel.findById(id)
-        await UserModel.deleteOne(userToDelete)
-        res.status(204).send({
-            message: "User deleted successfully."
-        })
+        if(userToDelete) {
+            await UserModel.deleteOne(userToDelete)
+            res.status(200).send({
+                message: "User deleted successfully."
+            })
+        }
+        else {
+            res.status(404).send({
+                message: "User not found"
+            })
+        }
     }
     catch (error) {
         res.status(500).send({
-            message: `An error occurred: ${error}`
+            message: `${error}`
        })
     }
 })
-
-
-/* NOTES
-
-
-to run "node index.js" or "npm start" (npm start defined in package.json)
-http://localhost:3000/
-
-Tutorial to for setting up Express and Mongo:
-youtube.com/watch?v=30p9QfybWZg
-
-Mongoose Queries:
-https://www.geeksforgeeks.org/mongoose-queries/
-
-*/
