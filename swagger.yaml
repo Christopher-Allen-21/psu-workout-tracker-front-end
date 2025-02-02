@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: API documentation examples
+  version: 1.0.0
+paths:
+  /:
+    get:
+      summary: Returns a greeting
+      responses:
+        200:
+          description: greeting response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Hello World from Express and MongoDb!

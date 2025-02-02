@@ -1,7 +1,13 @@
-import express from "express"
-import mongoose from "mongoose"
-import dotenv from "dotenv"
-import UserModel from "./models/user.js"
+const express = require('express')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+const YAML = require('yamljs')
+const swaggerUI = require('swagger-ui-express')
+const swaggerDocument = YAML.load('./swagger.yaml')
+const UserModel = require('./models/user.js')
+
+
+
 
 const app = express()
 
@@ -10,7 +16,7 @@ dotenv.config()
 const PORT = process.env.PORT || 7000
 const MONGO_URL = process.env.MONGO_URL
 
-app.use(express.json())
+app.use('/api-docs', express.json(), swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 mongoose.connect(MONGO_URL).then(() => {
     console.log("Db is connected successfully")
@@ -120,6 +126,14 @@ app.delete('/users/:id', async(req, res) => {
 
 
 /*
+
+npm init -y                         --> installs npm and creates package.json
+npm install express                 --> installs express
+npm i mongoose                      --> installs install mongoose
+npm i dotenv                        --> installs dotenv for environment vars
+npm install --save-dev nodemon      --> installs nodemon
+npm install yamljs                  --> installs yaml
+npm install swagger-ui-express      --> installs swagger UI
 
 to run "node index.js" or "npm start" (npm start defined in package.json)
 http://localhost:3000/
