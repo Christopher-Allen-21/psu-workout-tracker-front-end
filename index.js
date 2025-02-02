@@ -53,7 +53,7 @@ app.get('/users/:id', async(req, res) => {
     }
     catch {
         res.status(404).send({
-            message: "User not found"
+            message: "User not found."
         })
     }
 })
@@ -61,7 +61,8 @@ app.get('/users/:id', async(req, res) => {
 
 
 app.post('/users', async(req, res) => {
-    
+
+
     if(!req.body) {
         res.status(400).send({
             message: "Bad request. No user provided."
@@ -86,7 +87,7 @@ app.put('/users/:id', async(req, res) => {
     const id = req.params.id
 
     try {
-        await UserModel.updateOne(id, req.body)
+        await UserModel.findByIdAndUpdate(id, req.body)
         const updatedUser = await UserModel.findById(id)
         res.status(200).send({
             updatedUser
@@ -106,7 +107,9 @@ app.delete('/users/:id', async(req, res) => {
     try {
         const userToDelete = await UserModel.findById(id)
         await UserModel.deleteOne(userToDelete)
-        res.status(200).send()
+        res.status(200).send({
+            message: "User deleted successfully."
+        })
     }
     catch (error) {
         res.status(500).send({
@@ -121,8 +124,11 @@ app.delete('/users/:id', async(req, res) => {
 to run "node index.js" or "npm start" (npm start defined in package.json)
 http://localhost:3000/
 
-Tutorial to connect:
+Tutorial to for setting up Express and Mongo:
 youtube.com/watch?v=30p9QfybWZg
+
+Mongoose Queries:
+https://www.geeksforgeeks.org/mongoose-queries/
 
 Links for when Canvas crashes:
 https://psu.instructure.com/courses/2383057/pages/instantiating-a-mern-architecture?module_item_id=43085873
