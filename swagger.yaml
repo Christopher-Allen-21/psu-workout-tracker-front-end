@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Sample API
-  description: API documentation examples
+  title: User API
+  description: API documentation for Users
   version: 1.0.0
 paths:
   /:

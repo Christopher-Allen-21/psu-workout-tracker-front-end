@@ -7,8 +7,7 @@ const swaggerDocument = YAML.load('./swagger.yaml')
 const UserModel = require('./models/user.js')
 
 
-
-
+// Setup and configuration
 const app = express()
 
 dotenv.config()
@@ -17,7 +16,7 @@ const PORT = process.env.PORT || 7000
 const MONGO_URL = process.env.MONGO_URL
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
-app.use( express.json())
+app.use(express.json())
 
 
 mongoose.connect(MONGO_URL).then(() => {
@@ -31,7 +30,7 @@ mongoose.connect(MONGO_URL).then(() => {
 
 
 
-
+// Endpoints
 app.get('/', (req, res) => {
     res.send('Hello World from Express and MongoDb!')
 })
@@ -69,8 +68,6 @@ app.get('/users/:id', async(req, res) => {
 
 
 app.post('/users', async(req, res) => {
-
-
     if(!req.body) {
         res.status(400).send({
             message: "Bad request. No user provided."
@@ -127,15 +124,8 @@ app.delete('/users/:id', async(req, res) => {
 })
 
 
-/*
+/* NOTES
 
-npm init -y                         --> installs npm and creates package.json
-npm install express                 --> installs express
-npm i mongoose                      --> installs install mongoose
-npm i dotenv                        --> installs dotenv for environment vars
-npm install --save-dev nodemon      --> installs nodemon
-npm install yamljs                  --> installs yaml
-npm install swagger-ui-express      --> installs swagger UI
 
 to run "node index.js" or "npm start" (npm start defined in package.json)
 http://localhost:3000/
@@ -145,10 +135,5 @@ youtube.com/watch?v=30p9QfybWZg
 
 Mongoose Queries:
 https://www.geeksforgeeks.org/mongoose-queries/
-
-Links for when Canvas crashes:
-https://psu.instructure.com/courses/2383057/pages/instantiating-a-mern-architecture?module_item_id=43085873
-https://psu.instructure.com/courses/2383057/pages/restful-apis-integration?module_item_id=43085909
-
 
 */
