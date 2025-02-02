@@ -5,7 +5,6 @@ const YAML = require('yamljs')
 const swaggerUI = require('swagger-ui-express')
 const swaggerDocument = YAML.load('./swagger.yaml')
 const UserModel = require('./models/user.js')
-const HarryPotterHouseModel = require('./models/harryPotterHouses.js')
 
 
 // Setup and configuration
@@ -153,6 +152,7 @@ app.delete('/users/:id', async(req, res) => {
 */
 
 const axios = require('axios')
+const HarryPotterHouseModel = require('./models/harryPotterHouses.js')
 
 const harryPotterBaseUrl = "https://wizard-world-api.herokuapp.com"
 
@@ -164,10 +164,9 @@ const axiosInstance = axios.create({
 app.get("/harry-potter-houses", async (req, res, next) => {
     try {
       const response = await axiosInstance.get("/Houses/805fd37a-65ae-4fe5-b336-d767b8b7c73a");
-      console.log(response)
-      const newHouses = new HarryPotterHouseModel(response.data)
-      const insertedHouses = await newHouses.save()
-      res.status(200).json(insertedHouses);
+      const newHouse = new HarryPotterHouseModel(response.data)
+      const insertedHouse = await newHouse.save()
+      res.status(200).json(insertedHouse);
   
     } 
     catch (err) {
