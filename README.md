@@ -12,11 +12,13 @@
 
 - **npm init -y** - setup new project and creates package.json
 - **npm install express** - installs express
-- **npm i mongoose** - installs install mongoose
-- **npm i dotenv** - installs dotenv for environment variables
+- **npm install mongodb** - installs mongodb
+- **npm i mongoose** - installs mongoose
+- **npm i dotenv** - installs dotenv (used for environment variables)
 - **npm install --save-dev nodemon** - installs nodemon
 - **npm install yamljs** - installs yaml
 - **npm install swagger-ui-express** - installs swagger UI
+- **npm install axios** - installs axios (used to make request to 3rd party API)
 
 # Additional Resources
 
