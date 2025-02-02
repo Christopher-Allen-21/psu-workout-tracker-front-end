@@ -83,6 +83,18 @@
 - MongoDB
   - ![image](https://github.com/user-attachments/assets/31f6f600-430f-45af-8684-cead3790cd85)
 
+# Consuming 3rd Party API
+
+- The GET request for "/harry-potter-houses" makes a request to https://wizard-world-api.herokuapp.com/Houses/805fd37a-65ae-4fe5-b336-d767b8b7c73a which returns House Ravenclaw from its API
+- The response from wizard-world-api is validated to ensure it has all of the required fields in the HarryPotterHouseSchema before being saved to HarryPotterHouse collection in MongoDB
+  - ![image](https://github.com/user-attachments/assets/15e5ab82-8ec3-4491-b681-3fc0cccf288c)
+  - ![image](https://github.com/user-attachments/assets/9ce4bebb-943b-4c94-8c23-62ca696f950c)
+  - ![image](https://github.com/user-attachments/assets/fd20872c-2906-45eb-b0dc-2a7deac7d2db)
+  - ![image](https://github.com/user-attachments/assets/d68b5f02-071c-4abe-a1bf-34e931c73b8c)
+  - ![image](https://github.com/user-attachments/assets/b65d50a7-f7c4-4754-a60e-15c82135153a)
+
+
+
 
 
 
