@@ -1,0 +1,29 @@
+#userTable {
+    border-collapse: collapse;
+    width: 75%;
+}
+
+#userTable td, #userTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#userTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#userTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: oklch(51.01% 0.274 263.83);
+  color: white;
+}
+
+button {
+    margin: 10px 4px 0 4px;
+}
+
+button:hover {
+    cursor: pointer;
+}

@@ -1,35 +1,58 @@
 import { Component } from '@angular/core';
 import { User } from '../models/user';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'user-profile',
   imports: [],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.scss'
+  styleUrl: './user-profile.component.scss',
 })
 export class UserProfileComponent {
-  users: User[] = [
-    {
-      firstName: "Robert",
-      lastName: "Allen",
-      birthDate: "05/22/1998",
-      email: "rallen7908@yahoo.com"
-    },
-    {
-      firstName: "Stephen",
-      lastName: "Allen",
-      birthDate: "05/22/1998",
-      email: "sallen7908@yahoo.com"
-    },
-    {
-      firstName: "Chris",
-      lastName: "Allen",
-      birthDate: "03/22/1996",
-      email: "callen7908@yahoo.com",
-      height: 69,
-      weight: 190,
-    }
-  ]
+  baseUrl = 'http://localhost:3000/'
 
-  constructor(){}
+  users: User[] = []
+
+
+  constructor(private readonly httpClient: HttpClient) {}
+
+  ngOnInit(): void {
+    this.users = this.getUsers()
+    // this.users = [this.getUserById('679e98bbb30d21c6a7218f68')]
+  }
+
+  getUsers(): User[] {
+    let url = this.baseUrl + 'users/'
+    let users = []
+
+    this.httpClient.get<User[]>(url).subscribe(res => {
+      let responseObject = {...res}
+
+      for(let user of responseObject['user']) {
+        users.push(user)
+      }
+    })
+
+    return users
+  }
+
+  getUserById(id: string): User {
+    let url = this.baseUrl + 'users/' + id + '/'
+    let user: User = null
+
+    this.httpClient.get<User>(url).subscribe(res => {
+      let responseObject = {...res}
+
+      user = responseObject['user']
+    })
+
+    return user
+  }
+
+  updateUser(id: string): void {
+
+  }
+
+
 }
