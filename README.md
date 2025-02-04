@@ -13,6 +13,8 @@
 - Frontend
   - **ng serve** - navigate to client directory and run this
 
-# NPM packages to install
+# Packages to install
 
-- **ng new <name of angular project>** - setup new angular project
+- **npm install -g @angular/cli** - install angular cli
+- **ng new "name of angular project"** - setup new angular project
+- **ng add @angular/material** - adds Angular Materials functionality
