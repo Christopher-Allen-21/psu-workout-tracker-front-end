@@ -51,14 +51,19 @@ export class UserProfileComponent {
   }
 
   updateUser(id: string): void {
-
+    console.log("hi")
+    alert("Suck it bitch" + id)
   }
 
   deleteUser(id: string): void {
     let url = this.baseUrl + 'users/' + id + '/'
 
-    this.httpClient.delete(url).subscribe(res => {
-      alert("User id:" + id + "\n" + res)
+    this.httpClient.delete(url, {observe: 'response'}).subscribe({
+      next: (res) => {
+        alert("Response status code: " + JSON.stringify(res.status) + "\nUser " + id + " deleted successfully.")
+      }
     })
   }
+
+
 }

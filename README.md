@@ -6,6 +6,10 @@
 
 - https://github.com/Christopher-Allen-21/psu-backend
 
+# NPM packages to install
+
+- **npm install --save cors** - installs cors; navigate to server directory and run this
+
 # To Run
 
 - Backend

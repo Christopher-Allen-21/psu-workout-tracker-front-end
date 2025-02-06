@@ -21,10 +21,18 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.height }}</td>
                 <td>{{ user.weight }}</td>
-                <td class="modifyUser">Update</td>
+                <td class="modifyUser" (click)="updateUser(user._id)">Update</td>
                 <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
             </tr>
         }
+        @if(users.length == 0) {
+            <tr>
+                <td colspan="8">No users found.</td>
+            </tr>
+        }
+        <tr>
+            <th colspan="8">{{ users.length }} record(s)</th>
+        </tr>
     </tbody>
 </table>
 
