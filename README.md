@@ -19,5 +19,5 @@
   - **ng new "name of angular project"** - setup new angular project
   - **ng add @angular/material** - adds Angular Materials functionality
 - In Server Directory
-  - **npm install --save cors** - installs cors; navigate to server directory and run this
+  - **npm install --save cors** - installs cors
 
