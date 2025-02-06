@@ -1,10 +1,10 @@
 #userTable {
     border-collapse: collapse;
     width: 75%;
+    border: 1px solid blue;
 }
 
-#userTable td, #userTable th {
-    border: 1px solid #ddd;
+#userTable td, #userTable th, .tableFooter {
     padding: 8px;
 }
   
@@ -12,11 +12,11 @@
     background-color: #f2f2f2;
 }
 
-#userTable th {
+#userTable th, .tableFooter {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: left;
-  background-color: oklch(51.01% 0.274 263.83);
+  background-color: blue;
   color: white;
 }
 
