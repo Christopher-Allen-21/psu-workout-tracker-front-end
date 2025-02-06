@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const YAML = require('yamljs')
@@ -16,7 +17,21 @@ const PORT = process.env.PORT || 7000
 const MONGO_URL = process.env.MONGO_URL
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
-app.use(express.json())
+
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:4200']
+app.use(express.json(), cors({
+    origin: function(origin, callback){
+        // allow requests with no origin 
+        // (like mobile apps or curl requests)
+        if(!origin) return callback(null, true)
+        if(allowedOrigins.indexOf(origin) === -1){
+          var msg = 'The CORS policy for this site does not ' +
+                    'allow access from the specified Origin.'
+          return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+      }
+}))
 
 
 mongoose.connect(MONGO_URL).then(() => {

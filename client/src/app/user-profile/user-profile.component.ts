@@ -54,5 +54,11 @@ export class UserProfileComponent {
 
   }
 
+  deleteUser(id: string): void {
+    let url = this.baseUrl + 'users/' + id + '/'
 
+    this.httpClient.delete(url).subscribe(res => {
+      alert("User id:" + id + "\n" + res)
+    })
+  }
 }

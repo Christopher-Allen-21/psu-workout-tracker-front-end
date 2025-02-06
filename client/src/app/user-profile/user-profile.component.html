@@ -1,27 +1,33 @@
 <b>Users</b>
 <table id="userTable">
-    <tr>
-        <th>Id:</th>
-        <th>Name:</th>
-        <th>Birth Date:</th>
-        <th>Email:</th>
-        <th>Height:</th>
-        <th>Weight:</th>
-    </tr>
-    @for(user of users; track user) {
+    <thead>
         <tr>
-            <td>{{ user._id }}</td>
-            <td>{{ user.firstName }} {{ user.lastName }}</td>
-            <td>{{ user.birthDate }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.height }}</td>
-            <td>{{ user.weight }}</td>
+            <th>Id:</th>
+            <th>Name:</th>
+            <th>Birth Date:</th>
+            <th>Email:</th>
+            <th>Height:</th>
+            <th>Weight:</th>
+            <th></th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @for(user of users; track user) {
+            <tr>
+                <td>{{ user._id }}</td>
+                <td>{{ user.firstName }} {{ user.lastName }}</td>
+                <td>{{ user.birthDate }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.height }}</td>
+                <td>{{ user.weight }}</td>
+                <td class="modifyUser">Update</td>
+                <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 <span>
     <button>Create User</button>
-    <button>Update User</button>
-    <button>Delete User</button>
 </span>
