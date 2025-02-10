@@ -17,8 +17,4 @@ export class AppComponent {
     'programs',
     'user-profile'
   ]
-
-
-
-
 }

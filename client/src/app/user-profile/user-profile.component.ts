@@ -35,7 +35,6 @@ export class UserProfileComponent {
 
   ngOnInit(): void {
     this.users = this.getUsers()
-    // this.users = [this.getUserById('679e98bbb30d21c6a7218f68')]
   }
 
   getUsers(): User[] {
@@ -115,6 +114,4 @@ export class UserProfileComponent {
       }
     })
   }
-
-
 }
