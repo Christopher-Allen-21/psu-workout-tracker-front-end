@@ -1,4 +1,5 @@
 <div id="userTab">
+
     <b>Users</b>
     <table id="userTable">
         <thead>
@@ -9,7 +10,6 @@
                 <th>Email:</th>
                 <th>Height:</th>
                 <th>Weight:</th>
-                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -22,7 +22,6 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.height }}</td>
                     <td>{{ user.weight }}</td>
-                    <td class="modifyUser" (click)="updateUser(user._id)">Update</td>
                     <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
                 </tr>
             }
@@ -37,8 +36,95 @@
         </tbody>
     </table>
 
-    <span>
-        <button>Create User</button>
-    </span>
+    
+    <table>
+        <thead></thead>
+        <tbody>
+            <tr>
+                <td class="tableOfTables">
+                    <table class="createUpdateUserTable">
+                        <thead>
+                            <tr>
+                                <th>Create New User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>First Name:</td>
+                                <td><input [(ngModel)]="firstNameInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Last Name:</td>
+                                <td><input [(ngModel)]="lastNameInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Birth Date:</td>
+                                <td><input [(ngModel)]="birthDateInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td><input [(ngModel)]="emailInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Height:</td>
+                                <td><input type="number" [(ngModel)]="heightInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Weight:</td>
+                                <td><input type="number" [(ngModel)]="weightInput"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <div class="button" (click)="createUser()">
+                        Create
+                    </div>
+                </td>
+                <td class="tableOfTables"> 
+                    <table class="createUpdateUserTable">
+                        <thead>
+                            <tr>
+                                <th>Update User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Id:</td>
+                                <td><input [(ngModel)]="updateIdInput"></td>
+                            </tr>
+                            <tr>
+                                <td>First Name:</td>
+                                <td><input [(ngModel)]="updateFirstNameInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Last Name:</td>
+                                <td><input [(ngModel)]="updateLastNameInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Birth Date:</td>
+                                <td><input [(ngModel)]="updateBirthDateInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td><input [(ngModel)]="updateEmailInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Height:</td>
+                                <td><input type="number" [(ngModel)]="updateHeightInput"></td>
+                            </tr>
+                            <tr>
+                                <td>Weight:</td>
+                                <td><input type="number" [(ngModel)]="updateWeightInput"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <div class="button" (click)="updateUser()">
+                        Update
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>

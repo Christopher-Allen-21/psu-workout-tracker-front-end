@@ -8,6 +8,14 @@
     border: 1px solid blue;
 }
 
+// .createUpdateUserTable {
+//     margin: 3% 3% 0 0;
+// }
+
+.tableOfTables {
+    padding-right: 20px;
+}
+
 #userTable td, #userTable th, .tableFooter {
     padding: 8px;
 }
@@ -24,11 +32,17 @@
   color: white;
 }
 
-button {
+.button {
     margin: 10px 4px 0 4px;
+    width: 100px;
+    padding: 2px;
+    border: 1px solid black;
+    background-color: gray;
+    color: white;
+    text-align: center;
 }
 
-button:hover {
+.button:hover {
     cursor: pointer;
 }
 
