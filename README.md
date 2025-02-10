@@ -45,10 +45,18 @@
     - ![image](https://github.com/user-attachments/assets/3edbbcdc-c47a-495a-8c8c-eb918bee00e0)
   - DELETE
     - ![image](https://github.com/user-attachments/assets/9bb28f1c-beeb-4a8e-bfe2-00695c1ee89f)
+- Social Media Login Integration
+  - Added script for Google authentication
+    - ![image](https://github.com/user-attachments/assets/b6f4f6af-5a0e-436d-82a1-39f762ff6286)
+  - Added client id from Google API
+    - ![image](https://github.com/user-attachments/assets/5f018b47-6b1b-43fa-a978-36ddc793e9b2)
+  - Added html for Google log in
+    - ![image](https://github.com/user-attachments/assets/9bc17733-3cc1-46f7-8c58-e5c56fbe89c3)
+
  
 # Functionality Demo
 - Routing
-  - ![image](https://github.com/user-attachments/assets/cd185dee-2a78-4938-a5fd-18f60d5faa9c)
+  - ![image](https://github.com/user-attachments/assets/4db840ec-27c2-42d9-87fe-7fa4fed0b13c)
   - ![image](https://github.com/user-attachments/assets/f0c315e8-0cf5-4bfa-a6fe-0e3d09d8200d)
   - ![image](https://github.com/user-attachments/assets/0d20cc15-a732-4718-957c-1dd380f3d07a)
 - Get Users
@@ -65,6 +73,15 @@
 - Delete User
   - ![image](https://github.com/user-attachments/assets/e8bb8848-4cb5-4e36-8e47-a2a3d76ce477)
   - ![image](https://github.com/user-attachments/assets/cc862449-06da-41db-ab3d-42297cfa7634)
+- Social Media Login Integration
+  -  ![image](https://github.com/user-attachments/assets/699fb071-f1b8-4e13-817b-629a42c925f2)
+  -  ![image](https://github.com/user-attachments/assets/4ff45fda-efde-46fa-821e-d45241cc335c)
+  -  ![image](https://github.com/user-attachments/assets/ea76d5cf-fdff-4526-8503-9832a7941689)
+  -  ![image](https://github.com/user-attachments/assets/3b479b50-7ad3-454f-bfaf-32d9740d058a)
+
+
+
+
 
 
  
