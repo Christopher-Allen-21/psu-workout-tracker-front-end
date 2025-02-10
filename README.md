@@ -23,7 +23,8 @@
 
 # Code Walkthrough
 - Chose Angular 19 for front end
-- Reused same backend from previuos week's assignment
+- Reused most of the backend from previuos week's assignment. Added localhost to allowed origins for CORS
+  - ![image](https://github.com/user-attachments/assets/613c0b85-1aa6-43f3-b955-8da2cf9a5057)
 - Defined routes and associated components
   - ![image](https://github.com/user-attachments/assets/bf624516-f19d-4e9b-94c3-f6718b4c353e)
   - ![image](https://github.com/user-attachments/assets/2b69dc0c-b4ff-455e-8c77-213d649efb29)
