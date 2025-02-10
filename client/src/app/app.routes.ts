@@ -5,6 +5,9 @@ import { ProgramsComponent } from './programs/programs.component';
 
 export const routes: Routes = [
     {
+        path: '', component: WorkoutComponent
+    },
+    {
         path: 'workout', component: WorkoutComponent
     },
     {

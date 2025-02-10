@@ -4,8 +4,8 @@
 
 # For Frontend / Backend Reference
 
-- https://github.com/Christopher-Allen-21/psu-frontend
 - https://github.com/Christopher-Allen-21/psu-backend
+- https://github.com/Christopher-Allen-21/psu-frontend
 
 # To Run
 
@@ -14,7 +14,7 @@
 - Frontend
   - **ng serve** - navigate to client directory and run this
 
-# Packages to install
+# Packages to Install
 
 - In Client Directory
   - **tbd** - tbd
