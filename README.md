@@ -22,8 +22,29 @@
   - **npm install --save cors** - installs cors
 
 # Code Walkthrough
-- 
-
+- Chose Angular 19 for front end
+- Reused same backend from previuos week's assignment
+- Defined routes and associated components
+  - ![image](https://github.com/user-attachments/assets/bf624516-f19d-4e9b-94c3-f6718b4c353e)
+  - ![image](https://github.com/user-attachments/assets/2b69dc0c-b4ff-455e-8c77-213d649efb29)
+  - ![image](https://github.com/user-attachments/assets/7c8f0b1c-dfef-4311-92cc-01e26b6fc193)
+- Defined User model to match model in backend
+  - ![image](https://github.com/user-attachments/assets/a25b5dcd-f944-4ca6-adc6-974159d398d1)
+- Created table for displaying all users in db
+  - ![image](https://github.com/user-attachments/assets/2b5f46c8-0671-43d7-a359-dac4be9148c8)
+- Created tables for Creating and Updating Users
+  - ![image](https://github.com/user-attachments/assets/7ca50de6-79c3-4388-9b14-91c25041946b)
+  - ![image](https://github.com/user-attachments/assets/e712e305-dfd2-4c29-9781-ff9f0a27d345)
+- CRUD Methods
+  - GET
+    - ![image](https://github.com/user-attachments/assets/840b0ce8-633d-4cff-803a-ed02f2348d94)
+  - POST
+    - ![image](https://github.com/user-attachments/assets/f07e0c7b-d592-4545-811a-2accac000580)
+  - PUT
+    - ![image](https://github.com/user-attachments/assets/3edbbcdc-c47a-495a-8c8c-eb918bee00e0)
+  - DELETE
+    - ![image](https://github.com/user-attachments/assets/9bb28f1c-beeb-4a8e-bfe2-00695c1ee89f)
+ 
 # Functionality Demo
 - Routing
   - ![image](https://github.com/user-attachments/assets/cd185dee-2a78-4938-a5fd-18f60d5faa9c)
