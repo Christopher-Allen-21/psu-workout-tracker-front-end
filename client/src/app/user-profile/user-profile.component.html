@@ -1,41 +1,44 @@
-<b>Users</b>
-<table id="userTable">
-    <thead>
-        <tr>
-            <th>Id:</th>
-            <th>Name:</th>
-            <th>Birth Date:</th>
-            <th>Email:</th>
-            <th>Height:</th>
-            <th>Weight:</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(user of users; track user) {
+<div id="userTab">
+    <b>Users</b>
+    <table id="userTable">
+        <thead>
             <tr>
-                <td>{{ user._id }}</td>
-                <td>{{ user.firstName }} {{ user.lastName }}</td>
-                <td>{{ user.birthDate }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.height }}</td>
-                <td>{{ user.weight }}</td>
-                <td class="modifyUser" (click)="updateUser(user._id)">Update</td>
-                <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
+                <th>Id:</th>
+                <th>Name:</th>
+                <th>Birth Date:</th>
+                <th>Email:</th>
+                <th>Height:</th>
+                <th>Weight:</th>
+                <th></th>
+                <th></th>
             </tr>
-        }
-        @if(users.length == 0) {
+        </thead>
+        <tbody>
+            @for(user of users; track user) {
+                <tr>
+                    <td>{{ user._id }}</td>
+                    <td>{{ user.firstName }} {{ user.lastName }}</td>
+                    <td>{{ user.birthDate }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.height }}</td>
+                    <td>{{ user.weight }}</td>
+                    <td class="modifyUser" (click)="updateUser(user._id)">Update</td>
+                    <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
+                </tr>
+            }
+            @if(users.length == 0) {
+                <tr>
+                    <td colspan="8">No users found.</td>
+                </tr>
+            }
             <tr>
-                <td colspan="8">No users found.</td>
+                <td class="tableFooter" colspan="8">{{ users.length }} record(s)</td>
             </tr>
-        }
-        <tr>
-            <td class="tableFooter" colspan="8">{{ users.length }} record(s)</td>
-        </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<span>
-    <button>Create User</button>
-</span>
+    <span>
+        <button>Create User</button>
+    </span>
+
+</div>
