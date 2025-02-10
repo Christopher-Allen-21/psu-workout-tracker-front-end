@@ -1,4 +1,4 @@
-# PSU Masters Sample Backend/API
+# PSU Masters Sample UI Integrated with API
 
 - **Objective** - Implement a sample UI with CRUD backend
 
