@@ -1,10 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/utilities/styling-variables";
 
 html, body { 
     height: 100%; 
 }
 
 body { 
-    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+footer {
+    padding: 1% 0.5%;
+    margin-top: auto;
+    background-color: $base-color;
+    color: white;
+    text-align: left;
 }
 

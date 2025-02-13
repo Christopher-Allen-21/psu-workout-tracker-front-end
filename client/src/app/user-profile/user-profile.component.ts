@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ReplaceNullPipe } from '../utilities/replace-null.pipe';
+import { ReplaceNullPipe } from '../utilities/pipes/replace-null.pipe';
 
 
 @Component({
@@ -36,7 +36,6 @@ export class UserProfileComponent {
 
   ngOnInit(): void {
     this.users = this.getUsers()
-    console.log(this.users)
   }
 
   getUsers(): User[] {
