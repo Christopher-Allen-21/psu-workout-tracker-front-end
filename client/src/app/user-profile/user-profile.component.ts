@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReplaceNullPipe } from '../utilities/replace-null.pipe';
 
 
 @Component({
   selector: 'user-profile',
-  imports: [FormsModule],
+  imports: [FormsModule, ReplaceNullPipe],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
 })
@@ -35,6 +36,7 @@ export class UserProfileComponent {
 
   ngOnInit(): void {
     this.users = this.getUsers()
+    console.log(this.users)
   }
 
   getUsers(): User[] {

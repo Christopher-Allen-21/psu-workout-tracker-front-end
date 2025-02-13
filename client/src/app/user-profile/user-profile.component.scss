@@ -1,3 +1,5 @@
+@import "../utilities/styling-variables";
+
 #userTab {
     margin: 1%;
 }
@@ -5,12 +7,8 @@
 #userTable {
     border-collapse: collapse;
     width: 75%;
-    border: 1px solid blue;
+    border: 1px solid $base-color;
 }
-
-// .createUpdateUserTable {
-//     margin: 3% 3% 0 0;
-// }
 
 .tableOfTables {
     padding-right: 20px;
@@ -28,7 +26,7 @@
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: left;
-  background-color: blue;
+  background-color: $base-color;
   color: white;
 }
 

@@ -20,8 +20,8 @@
                     <td>{{ user.firstName }} {{ user.lastName }}</td>
                     <td>{{ user.birthDate }}</td>
                     <td>{{ user.email }}</td>
-                    <td>{{ user.height }}</td>
-                    <td>{{ user.weight }}</td>
+                    <td>{{ user.height | replaceNull }}</td>
+                    <td>{{ user.weight | replaceNull }}</td>
                     <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
                 </tr>
             }
