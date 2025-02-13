@@ -19,7 +19,7 @@
         </thead>
         <tbody>
             @for(program of programs; track program) {
-                <tr (click)="startChosenWorkout(program.name)">
+                <tr (click)="startChosenWorkout(program)">
                     <td>{{ program._id }}</td>
                     <td>{{ program.name }}</td>
                     <td>{{ program.description }}</td>
@@ -53,7 +53,7 @@
         </thead>
         <tbody>
             @for(program of programs; track program) {
-                <tr (click)="startChosenWorkout(program.name)">
+                <tr (click)="startChosenWorkout(program)">
                     <td>{{ program._id }}</td>
                     <td>{{ program.name }}</td>
                     <td>{{ program.description }}</td>

@@ -42,12 +42,11 @@ export class ChooseWorkoutComponent {
     constructor(private router: Router) {}
   
     returnToStartWorkout(): void {
-      console.log("hi")
       this.router.navigateByUrl('workout');
     }
 
-    startChosenWorkout(programName: string): void {
-      console.log(programName)
+    startChosenWorkout(program: Program): void {
+      console.log(program)
       this.router.navigateByUrl('workout/in-progress');
     }
 }

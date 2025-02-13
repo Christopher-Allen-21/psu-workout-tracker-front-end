@@ -21,5 +21,9 @@ li a {
 }
 
 li a:hover {
+  text-decoration: underline;
+}
+
+.active-tab {
   background-color: #111;
 }

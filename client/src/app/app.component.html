@@ -1,7 +1,31 @@
 <ul>
-    <li><a [routerLink]="routerLinks[0]" routerLinkActive="active">Workout</a></li>
-    <li><a [routerLink]="routerLinks[1]" routerLinkActive="active">Programs</a></li>
-    <li><a [routerLink]="routerLinks[2]" routerLinkActive="active">User Profile</a></li>
+    <li>
+        <a 
+        [routerLink]="routerLinks[0]" 
+        routerLinkActive 
+        #workoutRLA="routerLinkActive" 
+        [ngClass]="{'active-tab': workoutRLA.isActive}">
+            Workout
+        </a>
+    </li>
+    <li>
+        <a 
+        [routerLink]="routerLinks[1]" 
+        routerLinkActive 
+        #programsRLA="routerLinkActive" 
+        [ngClass]="{'active-tab': programsRLA.isActive}">
+            Programs
+        </a>
+    </li>
+    <li>
+        <a 
+        [routerLink]="routerLinks[2]" 
+        routerLinkActive 
+        #usersRLA="routerLinkActive" 
+        [ngClass]="{'active-tab': usersRLA.isActive}">
+            User Profile
+        </a>
+    </li>
 </ul>
 
 <router-outlet />
