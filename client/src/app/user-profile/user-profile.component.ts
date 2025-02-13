@@ -83,6 +83,8 @@ export class UserProfileComponent {
         alert("Response status code: " + JSON.stringify(res.status) + "\nUser created successfully.")
       }
     })
+
+    window.location.reload()
   }
 
   updateUser(): void {
@@ -103,6 +105,8 @@ export class UserProfileComponent {
         alert("Response status code: " + JSON.stringify(res.status) + "\nUser " + this.updateIdInput + " updated successfully.")
       }
     })
+
+    window.location.reload()
   }
 
   deleteUser(id: string): void {
@@ -113,5 +117,7 @@ export class UserProfileComponent {
         alert("Response status code: " + JSON.stringify(res.status) + "\nUser " + id + " deleted successfully.")
       }
     })
+
+    window.location.reload()
   }
 }

@@ -1,9 +1,11 @@
+@import "./utilities/styling-variables";
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: $base-color;
   }
   
   li {
@@ -21,3 +23,14 @@ ul {
   li a:hover {
     background-color: #111;
   }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1% 0.5%;
+    background-color: $base-color;
+    color: white;
+    text-align: left;
+}

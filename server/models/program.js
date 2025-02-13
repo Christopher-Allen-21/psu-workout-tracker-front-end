@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ExerciseSchema = new mongoose.Schema({
+const ProgramSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "name is a required field"]
@@ -11,16 +11,19 @@ const ExerciseSchema = new mongoose.Schema({
     },
     // Chest, Arms, etc.
     bodyArea: {
+        type: String,
+        required: [true, "bodyArea is a required field"]
+    },
+    workouts: {
         type: [String],
         required: [true, "bodyArea is a required field"]
     },
     musclesUsed: [String],
-    machinesUsed: [String]
 }, 
 {
-    collection : 'Exercises' // must match name of Collection in MongoDb
+    collection : 'Programs' // must match name of Collection in MongoDb
 })
 
-const ExerciseModel = mongoose.model("Exercise", ExerciseSchema)
+const ProgramModel = mongoose.model("Programs", ProgramSchema)
 
-module.exports = ExerciseModel
+module.exports = ProgramModel

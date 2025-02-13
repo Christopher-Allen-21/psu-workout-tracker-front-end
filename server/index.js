@@ -8,7 +8,7 @@ const swaggerDocument = YAML.load('./swagger.yaml')
 
 const userRoutes = require('./routes/user.js')
 const exerciseRoutes = require('./routes/exercise.js')
-const workoutRoutes = require('./routes/workout.js')
+const programRoutes = require('./routes/program.js')
 const workoutHistoryRoutes = require('./routes/workoutHistory.js')
 
 
@@ -40,7 +40,7 @@ app.use(
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 app.use('/users', userRoutes)
 app.use('/exercises', exerciseRoutes)
-app.use('/workouts', workoutRoutes)
+app.use('/programs', programRoutes)
 app.use('/workout-history', workoutHistoryRoutes)
 
 // If there is a connection error ensure MongoDb is running locally
