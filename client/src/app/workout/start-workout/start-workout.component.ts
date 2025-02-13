@@ -8,11 +8,9 @@ import { Router } from '@angular/router';
   styleUrl: './start-workout.component.scss'
 })
 export class StartWorkoutComponent {
-  // router: Router
+  
 
-  constructor(private router: Router) {
-    // this.router = router
-  }
+  constructor(private router: Router) {}
 
   startWorkout(): void {
     this.router.navigateByUrl('workout/select');
