@@ -17,14 +17,13 @@
 }
 
 .sub-header-container span {
-    font-weight: bold;
-    color: $base-color;
+    width: 100%;
     margin: 2% 10% 0 10%;
 }
 
 .programsTable {
     border-collapse: collapse;
-    width: 75%;
+    width: 100%;
     border: 1px solid $base-color;
 }
 

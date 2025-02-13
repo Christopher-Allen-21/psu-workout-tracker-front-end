@@ -5,69 +5,69 @@
 </div>
 
 <div class="sub-header-container">
-    <span>Custom Programs</span>
-</div>
-<div class="sub-header-container">
-    <table class="programsTable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Times Completed</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(program of programs; track program) {
-                <tr (click)="startChosenWorkout(program)">
-                    <td>{{ program._id }}</td>
-                    <td>{{ program.name }}</td>
-                    <td>{{ program.description }}</td>
-                    <td>{{ program.timesCompleted }}</td>
-                </tr>
-            }
-            @if(programs.length == 0) {
+    <span>
+        <b>Custom Programs</b>
+        <table class="programsTable">
+            <thead>
                 <tr>
-                    <td colspan="8">No programs found.</td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Times Completed</th>
                 </tr>
-            }
-            <tr>
-                <td class="tableFooter" colspan="8">{{ programs.length }} record(s)</td>
-            </tr>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for(program of programs; track program) {
+                    <tr (click)="startChosenWorkout(program)">
+                        <td>{{ program._id }}</td>
+                        <td>{{ program.name }}</td>
+                        <td>{{ program.description }}</td>
+                        <td>{{ program.timesCompleted }}</td>
+                    </tr>
+                }
+                @if(programs.length == 0) {
+                    <tr>
+                        <td colspan="8">No programs found.</td>
+                    </tr>
+                }
+                <tr>
+                    <td class="tableFooter" colspan="8">{{ programs.length }} record(s)</td>
+                </tr>
+            </tbody>
+        </table>
+    </span> 
 </div>
 
 <div class="sub-header-container">
-    <span>Pre-Made Programs</span>
-</div>
-<div class="sub-header-container">
-    <table class="programsTable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Times Completed</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(program of programs; track program) {
-                <tr (click)="startChosenWorkout(program)">
-                    <td>{{ program._id }}</td>
-                    <td>{{ program.name }}</td>
-                    <td>{{ program.description }}</td>
-                    <td>{{ program.timesCompleted }}</td>
-                </tr>
-            }
-            @if(programs.length == 0) {
+    <span>
+        <b>Pre-Made Programs</b>
+        <table class="programsTable">
+            <thead>
                 <tr>
-                    <td colspan="8">No programs found.</td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Times Completed</th>
                 </tr>
-            }
-            <tr>
-                <td class="tableFooter" colspan="8">{{ programs.length }} record(s)</td>
-            </tr>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for(program of programs; track program) {
+                    <tr (click)="startChosenWorkout(program)">
+                        <td>{{ program._id }}</td>
+                        <td>{{ program.name }}</td>
+                        <td>{{ program.description }}</td>
+                        <td>{{ program.timesCompleted }}</td>
+                    </tr>
+                }
+                @if(programs.length == 0) {
+                    <tr>
+                        <td colspan="8">No programs found.</td>
+                    </tr>
+                }
+                <tr>
+                    <td class="tableFooter" colspan="8">{{ programs.length }} record(s)</td>
+                </tr>
+            </tbody>
+        </table>
+    </span>
 </div>
