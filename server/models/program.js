@@ -11,12 +11,13 @@ const ProgramSchema = new mongoose.Schema({
     },
     // Chest, Arms, etc.
     bodyArea: {
-        type: String,
-        required: [true, "bodyArea is a required field"]
-    },
-    workouts: {
         type: [String],
         required: [true, "bodyArea is a required field"]
+    },
+    // Array of exercise ids
+    workouts: {
+        type: [String],
+        required: [true, "workouts is a required field"]
     },
     musclesUsed: [String],
 }, 
