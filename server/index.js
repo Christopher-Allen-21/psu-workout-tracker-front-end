@@ -49,9 +49,12 @@ app.use('/workout-history', workoutHistoryRoutes)
 // https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017
 mongoose.connect(MONGO_URL).then(() => {
     console.log("Db is connected successfully")
-    app.listen(PORT, () => {
-        console.log(`Server is running on http://${PORT}`)
-    })
+    // if statement so that when running supertest it uses Port 0 (Port 0 means the first randomly available port)
+    if (process.env.NODE_ENV !== 'test') {
+        app.listen(PORT, () => {
+            console.log(`Listening http://${PORT}`)
+        })
+    }
 }).catch((error) => {
     console.log(error)
 })

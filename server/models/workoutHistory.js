@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const WorkoutHistorySchema = new mongoose.Schema({
+    // Id of program
     program: {
         type: String,
         required: [true, "firstName is a required field"]

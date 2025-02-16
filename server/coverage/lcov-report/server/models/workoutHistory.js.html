@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for server/models/exercise.js</title>
+    <title>Code coverage report for server/models/workoutHistory.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">server/models</a> exercise.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">server/models</a> workoutHistory.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -84,17 +84,9 @@
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,30 +107,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span></td><td class="text"><pre class="prettyprint lang-js">const mongoose = require('mongoose')
 &nbsp;
-const ExerciseSchema = new mongoose.Schema({
-    name: {
+const WorkoutHistorySchema = new mongoose.Schema({
+    // Id of program
+    program: {
         type: String,
-        required: [true, "name is a required field"]
+        required: [true, "firstName is a required field"]
     },
-    description: {
+    dateOfWorkout: {
         type: String,
-        required: [true, "description is a required field"]
+        required: [true, "dateOfWorkout is a required field"]
     },
-    // Chest, Arms, etc.
-    bodyArea: {
-        type: [String],
-        required: [true, "bodyArea is a required field"]
-    },
-    musclesUsed: [String],
-    machinesUsed: [String]
+    // how user felt during workout
+    feeling: String,
 }, 
 {
-    collection : 'Exercises' // must match name of Collection in MongoDb
+    collection : 'WorkoutHistory' // must match name of Collection in MongoDb
 })
 &nbsp;
-const ExerciseModel = mongoose.model("Exercise", ExerciseSchema)
+const WorkoutHistoryModel = mongoose.model("WorkoutHistory", WorkoutHistorySchema)
 &nbsp;
-module.exports = ExerciseModel</pre></td></tr></table></pre>
+module.exports = WorkoutHistoryModel</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
