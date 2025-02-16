@@ -44,7 +44,8 @@ app.use('/programs', programRoutes)
 app.use('/workout-history', workoutHistoryRoutes)
 
 // If there is a connection error ensure MongoDb is running locally
-// Follow: Search services.msc in your device and click start to run the mongoDB server
+// Follow: Search services.msc in your device 
+// Click start "MongoDB Server (MongoDB) to run the mongoDB server
 // https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017
 mongoose.connect(MONGO_URL).then(() => {
     console.log("Db is connected successfully")
@@ -60,3 +61,4 @@ app.get('/', (req, res) => {
     res.send('Hello World from Express and MongoDb!')
 })
 
+module.exports = app

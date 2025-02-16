@@ -19,7 +19,8 @@
 - In Client Directory
   - **tbd** - tbd
 - In Server Directory
-  - **tbd** - tbd
+  - **npm i jest --save-dev** - Install Jest
+  - **npm install supertest --save-dev** - Install Supertest
 
 # Code Walkthrough
 
