@@ -46,6 +46,13 @@
     - ![image](https://github.com/user-attachments/assets/39801e66-0242-4596-9c8b-ddde03a0b709)
 
 - **Frontend Testing**
+  - Testing router change when calling different methods
+  - When startWorkout() method is called, it changes the route to 'workout/select'
+    - ![image](https://github.com/user-attachments/assets/69298eee-703a-4efc-b579-58c25bcb5a0f)
+  - More test cases for different component testing different routes
+    - ![image](https://github.com/user-attachments/assets/a98adecb-a02e-43f7-aa0d-5927fce75ea3)
+  - asdf
+
 
 # Functionality Demo
 
