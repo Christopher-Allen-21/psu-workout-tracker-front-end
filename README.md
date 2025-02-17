@@ -1,6 +1,6 @@
 # PSU Masters Sample Final Project
 
-- **Objective** - To design, develop, and deploy a project that demonstrates your skills and knowledge of web development
+- **Objective** - To design, develop, and deploy a project that demonstrates skills and knowledge of web development
 
 # For Frontend / Backend Reference
 
