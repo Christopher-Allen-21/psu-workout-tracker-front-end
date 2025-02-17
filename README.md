@@ -45,7 +45,7 @@
     - Describing each test. Includes happy path and error handling tests
     - ![image](https://github.com/user-attachments/assets/39801e66-0242-4596-9c8b-ddde03a0b709)
 
-- ## **Frontend Testing**
+- **Frontend Testing**
 
 # Functionality Demo
 
@@ -55,4 +55,5 @@
   - Running test cases. Have 5 test files with 46 tests. Overall line coverage is over 80% across the board
     - ![image](https://github.com/user-attachments/assets/1c86dac7-d077-4c3a-9a72-f6524c872f01)
 
-- ## **Frontend**
+- **Frontend**
+  - Use **ng test --code-coverage** to run unit tests with code coverage
