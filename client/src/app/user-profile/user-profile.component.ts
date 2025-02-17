@@ -3,6 +3,8 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReplaceNullPipe } from '../utilities/pipes/replace-null.pipe';
+import { Observable, of } from 'rxjs';
+import { response } from 'express';
 
 
 @Component({
@@ -14,7 +16,7 @@ import { ReplaceNullPipe } from '../utilities/pipes/replace-null.pipe';
 export class UserProfileComponent {
   baseUrl = 'http://localhost:3000/'
 
-  users: User[] = []
+  users = []
 
   firstNameInput: string
   lastNameInput: string
@@ -35,22 +37,19 @@ export class UserProfileComponent {
   constructor(private readonly httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    this.users = this.getUsers()
+    this.getUsers()
   }
 
-  getUsers(): User[] {
+  getUsers(): Observable<User[]> {
     let url = this.baseUrl + 'users/'
-    let users = []
+    let usersObservable: Observable<User[]>
 
-    this.httpClient.get<User[]>(url).subscribe(res => {
+    this.httpClient.get<User>(url).subscribe(res => {
       let responseObject = {...res}
-
-      for(let user of responseObject['user']) {
-        users.push(user)
-      }
+      this.users = responseObject['user']
     })
 
-    return users
+    return usersObservable
   }
 
   getUserById(id: string): User {
@@ -60,7 +59,7 @@ export class UserProfileComponent {
     this.httpClient.get<User>(url).subscribe(res => {
       let responseObject = {...res}
 
-      user = responseObject['user']
+      return responseObject
     })
 
     return user

@@ -25,13 +25,13 @@
                     <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
                 </tr>
             }
-            @if(users.length == 0) {
+            @if(users?.length == 0) {
                 <tr>
                     <td colspan="8">No users found.</td>
                 </tr>
             }
             <tr>
-                <td class="tableFooter" colspan="8">{{ users.length }} record(s)</td>
+                <td class="tableFooter" colspan="8">{{ users?.length }} record(s)</td>
             </tr>
         </tbody>
     </table>

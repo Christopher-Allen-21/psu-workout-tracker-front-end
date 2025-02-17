@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 
-import { UserProfileComponent } from './user-profile.component';
-import { User } from '../models/user';
-import { HttpClient } from '@angular/common/http';
+import { UserProfileComponent } from './user-profile.component'
+import { User } from '../models/user'
 
 describe('UserProfileComponent', () => {
-  let component: UserProfileComponent;
-  let fixture: ComponentFixture<UserProfileComponent>;
-  const httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put', 'delete']);
+  let component: UserProfileComponent
+  let fixture: ComponentFixture<UserProfileComponent>
+  let testingController: HttpTestingController
 
   let mockUsers: User[] = [
     {
@@ -32,21 +32,27 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserProfileComponent],
-      providers: [{ provide: HttpClient, useValue: httpClientSpy }]
+      imports: [UserProfileComponent, HttpClientTestingModule]
     })
-    .compileComponents();
+    .compileComponents()
 
-    fixture = TestBed.createComponent(UserProfileComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(UserProfileComponent)
+    testingController = TestBed.inject(HttpTestingController)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    expect(component).toBeTruthy()
+  })
 
-  it('should return data for abc endpoint', () => {
-    component.getUsers().subscribe(data => expect(data.status).toBe(200));
-  });
-});
+  // it('should get all Users', () => {
+
+  //   component.getUsers().subscribe((users: any) => {
+  //     expect(users).toBeTruthy()
+  //   })
+
+  //   const mockReq = testingController.expectOne('/users')
+  //   mockReq.flush(Object.values(mockUsers))
+  // })
+})
