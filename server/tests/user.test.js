@@ -37,6 +37,11 @@ describe("GET /users/:id", () => {
         expect(response.text).toBe('{"message":"User not found"}')
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if user id is not in correct format", async () => {
+        const response = await request(app).get("/users/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("POST /users", () => {
@@ -64,6 +69,11 @@ describe("PUT /users/:id", () => {
         const response = await request(app).put("/users").send(validUser)
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if user id is not in correct format", async () => {
+        const response = await request(app).put("/users/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("DELETE /users/:id", () => {
@@ -76,5 +86,10 @@ describe("DELETE /users/:id", () => {
     test("should respond with a 404 status code if user id is not found", async () => {
         const response = await request(app).delete("/users").send()
         expect(response.statusCode).toBe(404)
+    })
+
+    test("should respond with a 500 status code if user id is not in correct format", async () => {
+        const response = await request(app).delete("/users/1").send()
+        expect(response.statusCode).toBe(500)
     })
 })

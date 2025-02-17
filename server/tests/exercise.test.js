@@ -35,6 +35,11 @@ describe("GET /exercises/:id", () => {
         expect(response.text).toBe('{"message":"Exercise not found"}')
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if exercise id is not in correct format", async () => {
+        const response = await request(app).get("/exercises/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("POST /exercises", () => {
@@ -62,6 +67,11 @@ describe("PUT /exercises/:id", () => {
         const response = await request(app).put("/exercises").send(validExercise)
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if exercise id is not in correct format", async () => {
+        const response = await request(app).put("/exercises/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("DELETE /exercises/:id", () => {
@@ -74,5 +84,10 @@ describe("DELETE /exercises/:id", () => {
     test("should respond with a 404 status code if exercise id is not found", async () => {
         const response = await request(app).delete("/exercises").send()
         expect(response.statusCode).toBe(404)
+    })
+
+    test("should respond with a 500 status code if exercise id is not in correct format", async () => {
+        const response = await request(app).delete("/exercises/1").send()
+        expect(response.statusCode).toBe(500)
     })
 })

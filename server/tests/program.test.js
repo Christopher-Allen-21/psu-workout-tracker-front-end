@@ -34,6 +34,11 @@ describe("GET /programs/:id", () => {
         expect(response.text).toBe('{"message":"Program not found"}')
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if program id is not in correct format", async () => {
+        const response = await request(app).get("/programs/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("POST /programs", () => {
@@ -61,6 +66,11 @@ describe("PUT /programs/:id", () => {
         const response = await request(app).put("/programs").send(validProgram)
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if program id is not in correct format", async () => {
+        const response = await request(app).put("/programs/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("DELETE /programs/:id", () => {
@@ -73,5 +83,10 @@ describe("DELETE /programs/:id", () => {
     test("should respond with a 404 status code if program id is not found", async () => {
         const response = await request(app).delete("/programs").send()
         expect(response.statusCode).toBe(404)
+    })
+
+    test("should respond with a 500 status code if program id is not in correct format", async () => {
+        const response = await request(app).delete("/programs/1").send()
+        expect(response.statusCode).toBe(500)
     })
 })

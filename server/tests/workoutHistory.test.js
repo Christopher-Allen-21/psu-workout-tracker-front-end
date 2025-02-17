@@ -37,6 +37,11 @@ describe("GET /workout-historys/:id", () => {
         expect(response.text).toBe('{"message":"Workout History not found"}')
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if workout history id is not in correct format", async () => {
+        const response = await request(app).get("/workout-history/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("POST /workout-history", () => {
@@ -64,6 +69,11 @@ describe("PUT /workout-history/:id", () => {
         const response = await request(app).put("/workout-history").send(validWorkoutHistory)
         expect(response.statusCode).toBe(404)
     })
+
+    test("should respond with a 500 status code if workout history id is not in correct format", async () => {
+        const response = await request(app).put("/workout-history/1").send()
+        expect(response.statusCode).toBe(500)
+    })
 })
 
 describe("DELETE /workout-history/:id", () => {
@@ -76,5 +86,10 @@ describe("DELETE /workout-history/:id", () => {
     test("should respond with a 404 status code if workout history id is not found", async () => {
         const response = await request(app).delete("/workout-history").send()
         expect(response.statusCode).toBe(404)
+    })
+
+    test("should respond with a 500 status code if workout history id is not in correct format", async () => {
+        const response = await request(app).delete("/workout-history/1").send()
+        expect(response.statusCode).toBe(500)
     })
 })
