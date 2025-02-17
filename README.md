@@ -20,7 +20,7 @@
   - **npm i jest --save-dev** - Install Jest
   - **npm install supertest --save-dev** - Install Supertest
 - In Client Directory
-  - **tbd** - tbd
+  - N/A
 
 # Code Walkthrough
 
