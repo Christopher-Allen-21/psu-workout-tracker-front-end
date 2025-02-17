@@ -1,5 +1,13 @@
 const mongoose = require('mongoose')
 
+// {
+//     "name": "Seated Row",
+//     "description":"The Seated Row is an exercise that targets the muscles of the back and upper arms. It involves sitting on a rowing machine with a straight back and pulling a weighted bar towards your chest.",
+//     "bodyArea": ["Chest", "Arms", "Shoulders"],
+//     "musclesUse": [],
+//     "machinesUsed": []
+// }
+
 const ExerciseSchema = new mongoose.Schema({
     name: {
         type: String,

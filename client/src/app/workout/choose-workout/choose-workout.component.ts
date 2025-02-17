@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Program } from '../../models/program';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-choose-workout',
@@ -9,44 +11,38 @@ import { Program } from '../../models/program';
   styleUrl: './choose-workout.component.scss'
 })
 export class ChooseWorkoutComponent {
-    programs: Program[] = [ 
-      {
-        _id: '123',
-        name: 'Push',
-        description: 'Workout focusing on push movements',
-        bodyArea: ['Chest', 'Arms'],
-        timesCompleted: 11,
-        workouts: [''],
-        musclesUsed: null
-      },
-      {
-        _id: '456',
-        name: 'Pull',
-        description: 'Workout focusing on pull movements',
-        bodyArea: ['Back', 'Arms'],
-        timesCompleted: 3,
-        workouts: [''],
-        musclesUsed: null
-      },
-      {
-        _id: '789',
-        name: 'Legs',
-        description: 'Workout focusing on legs',
-        bodyArea: ['Legs'],
-        timesCompleted: 0,
-        workouts: [''],
-        musclesUsed: null
-      }
-    ]
+  baseUrl: string = 'http://localhost:3000/'
+  customPrograms: Program[] = []
+  premadePrograms: Program[] = []
 
-    constructor(private router: Router) {}
-  
-    returnToStartWorkout(): void {
-      this.router.navigateByUrl('workout');
-    }
+  constructor(private router: Router, private readonly httpClient: HttpClient) {}
 
-    startChosenWorkout(program: Program): void {
-      console.log(program)
-      this.router.navigateByUrl('workout/in-progress');
-    }
+  ngOnInit(): void {
+    this.getPrograms()
+  }
+
+  getPrograms(): Observable<Program[]> {
+    let url: string = this.baseUrl + 'programs/'
+    let programsObservable: Observable<Program[]>
+    let programs: Program[] = []
+
+    this.httpClient.get<Program>(url).subscribe(res => {
+      let responseObject = {...res}
+      programs = responseObject['program']
+
+      this.customPrograms = programs.filter((item) => item.customOrPremade === 'Custom')
+      this.premadePrograms = programs.filter((item) => item.customOrPremade === 'Premade')
+    })
+
+    return programsObservable
+  }
+
+  returnToStartWorkout(): void {
+    this.router.navigateByUrl('workout');
+  }
+
+  startChosenWorkout(program: Program): void {
+    console.log(program)
+    this.router.navigateByUrl('workout/in-progress');
+  }
 }
