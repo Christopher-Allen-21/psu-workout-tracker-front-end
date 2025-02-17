@@ -51,7 +51,6 @@
     - ![image](https://github.com/user-attachments/assets/69298eee-703a-4efc-b579-58c25bcb5a0f)
   - More test cases for different component testing different routes
     - ![image](https://github.com/user-attachments/assets/a98adecb-a02e-43f7-aa0d-5927fce75ea3)
-  - asdf
 
 
 # Functionality Demo
@@ -64,3 +63,6 @@
 
 - **Frontend**
   - Use **ng test --code-coverage** to run unit tests with code coverage
+  - Running test cases. Have 11 test cases. Overall line coverage is over 80%
+    - ![image](https://github.com/user-attachments/assets/fa5203f5-5e19-46b8-bf0b-59de26f682f2)
+
