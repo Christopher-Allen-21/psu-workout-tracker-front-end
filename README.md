@@ -31,3 +31,40 @@
 
 -
 
+# Deployment Steps using AWS EC2
+
+- Follow https://www.youtube.com/watch?v=nQdyiK7-VlQ
+- Commands to run for EC2 initial setup:
+  - Update/upgrade ubuntu
+    -  sudo apt update
+    -  sudo apt upgrade
+  - Install Node
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    - sudo apt install nodejs -y
+  - Rsync
+    - 
+  - Database 
+
+# Deployment Steps using AWS Lightsail
+
+- Follow https://www.youtube.com/watch?v=EsJXOllG3ZE
+- Commands to run once connected via SSH
+  - Update/upgrade ubuntu
+    -  sudo apt update
+    -  sudo apt upgrade
+  - Install Node
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    - sudo apt install nodejs -y
+  - Rsync
+    - 
+  - Database 
+
+
+
+
+
+
+
+
+
+ 
