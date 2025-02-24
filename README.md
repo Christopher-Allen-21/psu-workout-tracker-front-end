@@ -33,6 +33,10 @@
   - Every time a Main branch is updated a new deploy automatically kicks off
   - ![image](https://github.com/user-attachments/assets/401cea68-1db1-47e1-b2ab-0a5cc4ac0c92)
 
+- Monitoring
+  - Different monitoring metrics can be seen here
+  - ![image](https://github.com/user-attachments/assets/df6e139f-0602-48c0-9b1c-30613507136f)
+
 - Deploy
   - In Overview section you can see associated domains
   - ![image](https://github.com/user-attachments/assets/2934f30c-97c2-4317-bb44-9e945b1d4a1f)
