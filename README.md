@@ -6,7 +6,7 @@
 - https://chrisallen1996.com/workout
   
 # To Run
-- **ng serve** - navigate to client directory and run this
+- **ng serve** - run this in root directory
 
 # Packages to Install
 - **npm install -g @angular/cli** - install angular cli
