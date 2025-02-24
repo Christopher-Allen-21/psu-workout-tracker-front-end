@@ -18,7 +18,7 @@ export class ChooseWorkoutComponent {
   constructor(private router: Router, private readonly httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    this.getPrograms()
+    // this.getPrograms()
   }
 
   getPrograms(): Observable<Program[]> {

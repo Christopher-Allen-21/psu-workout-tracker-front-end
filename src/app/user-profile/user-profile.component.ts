@@ -36,7 +36,7 @@ export class UserProfileComponent {
   constructor(private readonly httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    this.getUsers()
+    // this.getUsers()
   }
 
   getUsers(): Observable<User[]> {
