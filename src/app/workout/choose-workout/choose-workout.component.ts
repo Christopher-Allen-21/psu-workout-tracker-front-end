@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrl: './choose-workout.component.scss'
 })
 export class ChooseWorkoutComponent {
-  baseUrl: string = 'http://localhost:3000/'
+  baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
   customPrograms: Program[] = []
   premadePrograms: Program[] = []
 

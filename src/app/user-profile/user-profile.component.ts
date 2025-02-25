@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
   styleUrl: './user-profile.component.scss',
 })
 export class UserProfileComponent {
-  baseUrl = 'http://localhost:3000/'
+  baseUrl = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
 
   users = []
 
