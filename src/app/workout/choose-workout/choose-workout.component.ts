@@ -31,8 +31,8 @@ export class ChooseWorkoutComponent {
       let responseObject = {...res}
       programs = responseObject['Items']
 
-      this.customPrograms = programs.filter((item) => item.customOrPremade === 'Custom')
-      this.premadePrograms = programs.filter((item) => item.customOrPremade === 'Premade')
+      this.customPrograms = programs.filter((item) => item.customOrPremade === 'Custom').sort((a,b) => a.pk < b.pk ? -1 : 1)
+      this.premadePrograms = programs.filter((item) => item.customOrPremade === 'Premade').sort((a,b) => a.pk < b.pk ? -1 : 1)
     })
 
     return programsObservable

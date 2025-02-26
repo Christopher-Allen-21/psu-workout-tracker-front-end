@@ -1,6 +1,6 @@
 <div class="back-button-container">
     <span (click)="returnToStartWorkout()">
-        <-- Back to Start Workout
+        <-- Back to Home
     </span>
 </div>
 
@@ -10,7 +10,6 @@
         <table class="programsTable">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Times Completed</th>
@@ -19,7 +18,6 @@
             <tbody>
                 @for(program of customPrograms; track program) {
                     <tr (click)="startChosenWorkout(program)">
-                        <td>{{ program.pk | replaceNull }}</td>
                         <td>{{ program.name | replaceNull }}</td>
                         <td>{{ program.description | replaceNull }}</td>
                         <td>{{ program.timesCompleted | replaceNull }}</td>
@@ -50,7 +48,6 @@
         <table class="programsTable">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Times Completed</th>
@@ -59,7 +56,6 @@
             <tbody>
                 @for(program of premadePrograms; track program) {
                     <tr (click)="startChosenWorkout(program)">
-                        <td>{{ program.pk | replaceNull }}</td>
                         <td>{{ program.name | replaceNull }}</td>
                         <td>{{ program.description | replaceNull }}</td>
                         <td>{{ program.timesCompleted | replaceNull }}</td>

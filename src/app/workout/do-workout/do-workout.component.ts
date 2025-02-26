@@ -18,14 +18,14 @@ baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.co
     "pk": "2",
     "sk": "5",
     "bodyArea": [
-      "Legs"
+      "Chest", "Arms"
     ],
     "customOrPremade": "Premade",
-    "description": "The Legs program consists of exercises that focus on upper and lower legs.",
+    "description": "The Push program consists of exercises that focus on pushing movements.",
     "musclesUsed": [],
-    "name": "Legs",
+    "name": "Push",
     "timesCompleted": 0,
-    "exercises": [ "1", "2", "3"]
+    "exercises": [ "0", "2", "3", "4", "5", "6"]
     
   }
   exercises: Exercise[] = []
@@ -53,5 +53,10 @@ baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.co
 
   returnToChooseProgram(): void {
     this.router.navigateByUrl('workout/select');
+  }
+
+  startChosenExercise(exercise: Exercise): void {
+    console.log(exercise)
+    this.router.navigateByUrl('workout/exercise');
   }
 }

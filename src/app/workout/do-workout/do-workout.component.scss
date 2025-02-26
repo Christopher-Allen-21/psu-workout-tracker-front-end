@@ -46,3 +46,9 @@
   background-color: $base-color;
   color: white;
 }
+
+.programsTable tr:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
