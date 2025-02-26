@@ -1,5 +1,6 @@
 export interface User {
-    _id: string
+    pk: string
+    sk: string
     firstName: string
     lastName: string
     birthDate: string

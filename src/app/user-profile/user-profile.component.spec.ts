@@ -11,7 +11,7 @@ describe('UserProfileComponent', () => {
 
   let mockUsers: User[] = [
     {
-      _id: "67acc1513f2b2bd87b67b8be",
+      id: "67acc1513f2b2bd87b67b8be",
       firstName: "Stephen",
       lastName: "Allen",
       birthDate:"05/22/1998",
@@ -20,7 +20,7 @@ describe('UserProfileComponent', () => {
       weight:170,
     },
     {
-      _id: "67acc15d3f2b2bd87b67b8c0",
+      id: "67acc15d3f2b2bd87b67b8c0",
       firstName: "Robert",
       lastName: "Allen",
       birthDate:"05/22/1998",

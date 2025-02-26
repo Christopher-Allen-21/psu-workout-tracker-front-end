@@ -13,7 +13,7 @@
 //   let location: Location
 
 //   let mockProgram: Program = {
-//     _id: '789',
+//     id: '789',
 //     name: 'Legs',
 //     description: 'Workout focusing on legs',
 //     bodyArea: ['Legs'],

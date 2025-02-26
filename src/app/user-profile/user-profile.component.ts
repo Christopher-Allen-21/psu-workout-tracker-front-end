@@ -17,6 +17,7 @@ export class UserProfileComponent {
 
   users = []
 
+  createId: string
   firstNameInput: string
   lastNameInput: string
   birthDateInput: string
@@ -45,7 +46,7 @@ export class UserProfileComponent {
 
     this.httpClient.get<User>(url).subscribe(res => {
       let responseObject = {...res}
-      this.users = responseObject['user']
+      this.users = responseObject['Items']
     })
 
     return usersObservable
@@ -68,7 +69,8 @@ export class UserProfileComponent {
     let url = this.baseUrl + 'users/'
 
     let request: User = {
-      _id: null,
+      pk: this.createId,
+      sk: this.createId,
       firstName: this.firstNameInput,
       lastName: this.lastNameInput,
       birthDate: this.birthDateInput,
@@ -90,7 +92,8 @@ export class UserProfileComponent {
     let url = this.baseUrl + 'users/' + this.updateIdInput + '/'
 
     let request: User = {
-      _id: this.updateIdInput,
+      pk: this.updateIdInput,
+      sk: this.updateIdInput,
       firstName: this.updateFirstNameInput,
       lastName: this.updateLastNameInput,
       birthDate: this.updateBirthDateInput,
@@ -108,8 +111,10 @@ export class UserProfileComponent {
     window.location.reload()
   }
 
-  deleteUser(id: string): void {
+  deleteUser(id): void {
+    console.log(id)
     let url = this.baseUrl + 'users/' + id + '/'
+    console.log(url)
 
     this.httpClient.delete(url, {observe: 'response'}).subscribe({
       next: (res) => {

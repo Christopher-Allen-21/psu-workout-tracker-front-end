@@ -16,13 +16,13 @@
         <tbody>
             @for(user of users; track user) {
                 <tr>
-                    <td>{{ user._id }}</td>
+                    <td>{{ user.pk }}</td>
                     <td>{{ user.firstName }} {{ user.lastName }}</td>
                     <td>{{ user.birthDate }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.height | replaceNull }}</td>
                     <td>{{ user.weight | replaceNull }}</td>
-                    <td class="modifyUser" (click)="deleteUser(user._id)">Delete</td>
+                    <td class="modifyUser" (click)="deleteUser(user.pk)">Delete</td>
                 </tr>
             }
             @if(users?.length == 0) {
@@ -48,6 +48,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td>Id:</td>
+                                <td><input [(ngModel)]="createId"></td>
+                            </tr>
                             <tr>
                                 <td>First Name:</td>
                                 <td><input [(ngModel)]="firstNameInput"></td>

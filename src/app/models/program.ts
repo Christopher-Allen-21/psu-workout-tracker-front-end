@@ -1,5 +1,6 @@
 export interface Program {
-    _id: string
+    pk: string
+    sk: string
     name: string
     description: string
     timesCompleted: number
