@@ -1,0 +1,48 @@
+@import "../../utilities/styling-variables";
+
+.back-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1% 0 0 1%;
+}
+
+.back-button-container span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sub-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+.sub-header-container:last-child {
+    margin-bottom: 5%;
+}
+
+.sub-header-container span {
+    width: 100%;
+    margin: 2% 10% 0 10%;
+}
+
+.programsTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid $base-color;
+}
+
+.programsTable td, .programsTable th, .tableFooter {
+    padding: 8px;
+}
+  
+.programsTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.programsTable th, .tableFooter {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
+  background-color: $base-color;
+  color: white;
+}

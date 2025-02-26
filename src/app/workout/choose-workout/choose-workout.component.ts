@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { Program } from '../../models/program';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 
 @Component({
   selector: 'app-choose-workout',
-  imports: [],
+  imports: [ReplaceNullPipe],
   templateUrl: './choose-workout.component.html',
   styleUrl: './choose-workout.component.scss'
 })

@@ -6,6 +6,6 @@ export interface Program {
     timesCompleted: number
     customOrPremade: string
     bodyArea: string[]
-    workouts: string[]
+    exercises: string[]
     musclesUsed?: string[]
 }

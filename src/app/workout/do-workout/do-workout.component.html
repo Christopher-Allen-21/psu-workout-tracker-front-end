@@ -1,1 +1,40 @@
-<p>do-workout works!</p>
+<div class="back-button-container">
+    <span (click)="returnToChooseProgram()">
+        <-- Back to Choose Program
+    </span>
+</div>
+
+<div class="sub-header-container">
+    <span>
+        <b>Exercises</b>
+        <table class="programsTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Body Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(exercise of exercises; track exercise) {
+                    <tr>
+                        <td>{{ exercise.pk | replaceNull }}</td>
+                        <td>{{ exercise.name | replaceNull }}</td>
+                        <td>{{ exercise.description | replaceNull }}</td>
+                        <td>{{ exercise.bodyArea | replaceNull }}</td>
+                    </tr>
+                }
+                @if(exercises.length == 0) {
+                    <tr>
+                        <td colspan="8">No exercises found.</td>
+                    </tr>
+                }
+                <tr>
+                    <td class="tableFooter" colspan="8">{{ exercises.length }} record(s)</td>
+                </tr>
+            </tbody>
+        </table>
+    </span>
+</div>
+

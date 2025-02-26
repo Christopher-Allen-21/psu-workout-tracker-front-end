@@ -16,6 +16,10 @@
     justify-content: center;
 }
 
+.sub-header-container:last-child {
+    margin-bottom: 5%;
+}
+
 .sub-header-container span {
     width: 100%;
     margin: 2% 10% 0 10%;
@@ -46,5 +50,15 @@
 .programsTable tr:hover {
     background-color: gray;
     color: white;
+    cursor: pointer;
+}
+
+.button {
+    border: 1px solid $base-color;
+    margin: 1% 10% 0 10%;
+}
+
+.button:hover {
+    text-decoration: underline;
     cursor: pointer;
 }
