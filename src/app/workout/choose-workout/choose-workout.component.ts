@@ -28,7 +28,7 @@ export class ChooseWorkoutComponent {
 
     this.httpClient.get<Program>(url).subscribe(res => {
       let responseObject = {...res}
-      programs = responseObject['program']
+      programs = responseObject['Items']
 
       this.customPrograms = programs.filter((item) => item.customOrPremade === 'Custom')
       this.premadePrograms = programs.filter((item) => item.customOrPremade === 'Premade')
