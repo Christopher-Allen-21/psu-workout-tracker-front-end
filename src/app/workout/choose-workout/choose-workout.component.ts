@@ -4,6 +4,9 @@ import { Program } from '../../models/program';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
+import { AppState } from '../../store/app.state';
+import { Store } from '@ngrx/store';
+import { SetChosenProgram } from '../../store/app.action';
 
 @Component({
   selector: 'app-choose-workout',
@@ -16,7 +19,11 @@ export class ChooseWorkoutComponent {
   customPrograms: Program[] = []
   premadePrograms: Program[] = []
 
-  constructor(private router: Router, private readonly httpClient: HttpClient) {}
+  constructor(
+    private router: Router, 
+    private readonly httpClient: HttpClient,
+    private readonly store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
     this.getPrograms()
@@ -43,6 +50,11 @@ export class ChooseWorkoutComponent {
   }
 
   startChosenWorkout(program: Program): void {
+    this.store.dispatch(
+      SetChosenProgram({
+        chosenProgram: program
+      })
+    )
     console.log(program)
     this.router.navigateByUrl('workout/in-progress');
   }

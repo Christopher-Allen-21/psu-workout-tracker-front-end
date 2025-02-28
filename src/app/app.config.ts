@@ -1,14 +1,21 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideStore, StoreModule } from '@ngrx/store';
+import { appStateReducer } from './store/app.reducer';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),
-    provideHttpClient(), provideAnimationsAsync()
-  ]
+    provideHttpClient(), provideAnimationsAsync(),
+    // provideStore({ appReducer: appStateReducer }),
+    importProvidersFrom(StoreModule.forRoot(appStateReducer)),
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+]
+
 };

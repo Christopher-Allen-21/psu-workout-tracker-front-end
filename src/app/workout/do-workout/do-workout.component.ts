@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Exercise } from '../../models/exercise';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
+import { AppState } from '../../store/app.state';
+import { Store } from '@ngrx/store';
+import { getChosenProgram } from '../../store/app.selector';
 
 @Component({
   selector: 'app-do-workout',
@@ -13,26 +16,21 @@ import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
   styleUrl: './do-workout.component.scss'
 })
 export class DoWorkoutComponent {
-baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
-  program: Program = {
-    "pk": "2",
-    "sk": "5",
-    "bodyArea": [
-      "Chest", "Arms"
-    ],
-    "customOrPremade": "Premade",
-    "description": "The Push program consists of exercises that focus on pushing movements.",
-    "musclesUsed": [],
-    "name": "Push",
-    "timesCompleted": 0,
-    "exercises": [ "0", "2", "3", "4", "5", "6"]
-    
-  }
+  baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
+  program: Program = null
   exercises: Exercise[] = []
 
-  constructor(private router: Router, private readonly httpClient: HttpClient) {}
+  constructor(
+    private router: Router, 
+    private readonly httpClient: HttpClient,
+    private readonly store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
+    this.store.select(getChosenProgram).subscribe((data) => {
+      this.program = data
+    })
+
     this.getPrograms()
   }
 
