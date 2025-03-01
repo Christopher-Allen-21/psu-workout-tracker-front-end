@@ -2,15 +2,13 @@ import { Component } from '@angular/core';
 import { Program } from '../../models/program';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Exercise } from '../../models/exercise';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { selectChosenProgram } from '../../store/app.selector';
-import { SetChosenExercise } from '../../store/app.action';
+import { SetChosenWorkoutAndExercise } from '../../store/app.action';
 import { Workout } from '../../models/workout';
-import e from 'express';
 
 @Component({
   selector: 'app-do-workout',
@@ -64,8 +62,11 @@ export class DoWorkoutComponent {
   }
 
   startChosenExercise(exercise: Exercise): void {
+    let chosenWorkout: Workout = this.workouts.filter(workout => workout.exercise.pk === exercise.pk)[0]
+
     this.store.dispatch(
-      SetChosenExercise({
+      SetChosenWorkoutAndExercise({
+        chosenWorkout: chosenWorkout,
         chosenExercise: exercise
       })
     )

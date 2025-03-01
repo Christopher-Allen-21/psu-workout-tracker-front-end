@@ -9,10 +9,10 @@ import { Store } from '@ngrx/store';
 import { SetChosenProgram } from '../../store/app.action';
 
 @Component({
-  selector: 'app-choose-workout',
+  selector: 'app-choose-program',
   imports: [ReplaceNullPipe],
-  templateUrl: './choose-workout.component.html',
-  styleUrl: './choose-workout.component.scss'
+  templateUrl: './choose-program.component.html',
+  styleUrl: './choose-program.component.scss'
 })
 export class ChooseWorkoutComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'

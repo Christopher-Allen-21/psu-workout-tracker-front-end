@@ -12,6 +12,13 @@ export const selectChosenProgram = createSelector(
     }
 )
 
+export const selectChosenWorkout = createSelector(
+    selectAppState,
+    (state) => {
+        return state.chosenWorkout
+    }
+)
+
 export const selectChosenExercise = createSelector(
     selectAppState,
     (state) => {

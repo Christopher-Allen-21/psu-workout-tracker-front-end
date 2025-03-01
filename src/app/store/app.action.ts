@@ -1,10 +1,11 @@
 import { createAction, props } from "@ngrx/store";
 import { Program } from "../models/program";
+import { Workout } from "../models/workout";
 import { Exercise } from "../models/exercise";
 
 export enum ActionType {
     SetChosenProgram = 'SetChosenProgram',
-    SetChosenExercise = 'SetChosenExercise'
+    SetChosenWorkoutAndExercise = 'SetChosenWorkoutAndExercise'
 }
 
 export const SetChosenProgram = createAction(
@@ -12,7 +13,10 @@ export const SetChosenProgram = createAction(
     props<{ chosenProgram: Program }>()
 )
 
-export const SetChosenExercise = createAction(
-    ActionType.SetChosenExercise,
-    props<{ chosenExercise: Exercise }>()
+export const SetChosenWorkoutAndExercise = createAction(
+    ActionType.SetChosenWorkoutAndExercise,
+    props<{ 
+        chosenWorkout: Workout,
+        chosenExercise: Exercise
+    }>()
 )

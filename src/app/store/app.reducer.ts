@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { SetChosenExercise, SetChosenProgram } from "./app.action";
+import { SetChosenWorkoutAndExercise, SetChosenProgram } from "./app.action";
 import { initialAppState } from "./app.state";
 
 
@@ -12,9 +12,10 @@ const _appStateReducer = createReducer(
             chosenProgram: action.chosenProgram
         }
     }),
-    on(SetChosenExercise, (state, action) => {
+    on(SetChosenWorkoutAndExercise, (state, action) => {
         return {
             ...state,
+            chosenWorkout: action.chosenWorkout,
             chosenExercise: action.chosenExercise
         }
     })

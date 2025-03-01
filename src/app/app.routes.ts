@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProgramsComponent } from './programs/programs.component';
 import { StartWorkoutComponent } from './workout/start-workout/start-workout.component';
-import { ChooseWorkoutComponent } from './workout/choose-workout/choose-workout.component';
+import { ChooseWorkoutComponent } from './workout/choose-program/choose-program.component';
 import { DoWorkoutComponent } from './workout/do-workout/do-workout.component';
 import { DoExerciseComponent } from './workout/do-exercise/do-exercise.component';
 

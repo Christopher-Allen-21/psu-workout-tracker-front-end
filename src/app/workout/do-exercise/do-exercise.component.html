@@ -8,35 +8,30 @@
     <b>{{ exercise.name }}</b>
 </div>
 
-<!-- <div class="sub-header-container">
+<div class="sub-header-container">
     <span>
         <table class="programsTable">
             <thead>
                 <tr>
                     <th></th>
-                    <th>Name</th>
-                    <th>Body Area</th>
+                    <th>Reps</th>
+                    <th>Weight</th>
                 </tr>
             </thead>
             <tbody>
-                @for(exercise of exercises; track exercise) {
+                @for(set of workout.repSchema; track set) {
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td (click)="startChosenExercise(exercise)">{{ exercise.name | replaceNull }}</td>
-                        <td (click)="startChosenExercise(exercise)">{{ exercise.bodyArea | replaceNull }}</td>
+                        <td>{{ set.reps | replaceNull }}</td>
+                        <td>{{ set.weight | replaceNull }}</td>
                     </tr>
                 }
-                @if(exercises.length == 0) {
+                @if(workout.repSchema.length == 0) {
                     <tr>
-                        <td colspan="8">No exercises found.</td>
+                        <td colspan="3">No exercises found.</td>
                     </tr>
                 }
             </tbody>
-            <tfoot>
-                <tr>
-                    <td class="tableFooter" colspan="3">{{ exercises.length }} record(s)</td>
-                </tr>
-            </tfoot>
         </table>
     </span>
-</div> -->
+</div>
