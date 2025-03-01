@@ -41,20 +41,17 @@ export class StartWorkoutComponent {
 
   ngOnInit(): void {
       this.getPrograms()
-      this.getWorkoutHistory()
+      this.getWorkoutHistoryByUser()
       this.calculateSetsAndReps()
       this.calculateTopAndBottomPrograms()
     }
   
-  getWorkoutHistory(): void {
-    let url: string = this.baseUrl + 'workout-history/'
-    let workoutHistory: WorkoutHistory[] = []
+  getWorkoutHistoryByUser(): void {
+    let url: string = this.baseUrl + 'workout-history/user/' + this.user.pk
 
     this.httpClient.get<WorkoutHistory[]>(url).subscribe(res => {
       let responseObject = {...res}
-      workoutHistory = responseObject['Items']
-
-      this.workoutHistory = workoutHistory.filter((item) => item.userId === this.user.pk).sort((a,b) => a.pk < b.pk ? -1 : 1)
+      this.workoutHistory = responseObject['Items']
     })
   }
 
@@ -65,8 +62,6 @@ export class StartWorkoutComponent {
       let responseObject = {...res}
       this.programs = responseObject['Items']
     })
-
-    console.log(this.programs)
   }
   
   calculateTopAndBottomPrograms(): void {
@@ -85,6 +80,27 @@ export class StartWorkoutComponent {
   }
 
   calculateSetsAndReps(): void {
+    let programs: Program[] = []
 
+    // get number of programs completd
+    for(let workout of this.workoutHistory) {
+      for(let program of this.programs) {
+        if(workout.program == program.pk) {
+          programs.push(program)
+        }
+      }
+    }
+
+    // set reps and sets completed
+    for(let program of programs) {
+      for(let workout of program.workouts) {
+        for(let repSchema of workout.repSchema) {
+          this.repsCompleted += repSchema.reps
+        }
+        this.setsCompleted += workout.repSchema.length
+      }
+    }
   }
+
+
 }

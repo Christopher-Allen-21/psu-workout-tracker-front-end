@@ -8,7 +8,7 @@
             <thead></thead>
             <tbody>
                 <tr>
-                    <td>{{ repsCompleted | replaceNull }} Reps Completed</td>
+                    <td (click)="getWorkoutHistoryByUser()">{{ repsCompleted | replaceNull }} Reps Completed</td>
                     <td>{{ setsCompleted | replaceNull }} Sets Completed</td>
                 </tr>
                 <tr>
