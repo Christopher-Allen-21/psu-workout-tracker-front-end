@@ -1,5 +1,5 @@
 <div class="header-container">
-    <h1>XXX Workouts Completed</h1>
+    <h1>{{ workoutHistory?.length}} Workouts Completed</h1>
 </div>
 
 <div class="sub-header-container">
@@ -8,12 +8,12 @@
             <thead></thead>
             <tbody>
                 <tr>
-                    <td>XXX Reps Completed</td>
-                    <td>XXX Sets Completed</td>
+                    <td>{{ repsCompleted | replaceNull }} Reps Completed</td>
+                    <td>{{ setsCompleted | replaceNull }} Sets Completed</td>
                 </tr>
                 <tr>
-                    <td>Top Workout Area: XXX</td>
-                    <td>Bottom Workout Area: XXX</td>
+                    <td>Top Program: {{ topProgram?.name | replaceNull }}</td>
+                    <td>Bottom Program: {{ bottomProgram?.name | replaceNull }}</td>
                 </tr>
             </tbody>
         </table>

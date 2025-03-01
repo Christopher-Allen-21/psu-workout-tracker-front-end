@@ -9,12 +9,12 @@ import { Exercise } from '../../models/exercise';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 
 @Component({
-  selector: 'do-exercise',
+  selector: 'choose-exercise',
   imports: [ReplaceNullPipe],
-  templateUrl: './do-exercise.component.html',
-  styleUrl: './do-exercise.component.scss'
+  templateUrl: './choose-exercise.component.html',
+  styleUrl: './choose-exercise.component.scss'
 })
-export class DoExerciseComponent {
+export class ChooseExerciseComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
   workout: Workout = null
   exercise: Exercise = null

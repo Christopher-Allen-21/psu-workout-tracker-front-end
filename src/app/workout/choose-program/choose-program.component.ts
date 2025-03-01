@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Program } from '../../models/program';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
@@ -31,7 +30,6 @@ export class ChooseWorkoutComponent {
 
   getPrograms(): void {
     let url: string = this.baseUrl + 'programs/'
-    let programsObservable: Observable<Program[]>
     let programs: Program[] = []
 
     this.httpClient.get<Program>(url).subscribe(res => {
