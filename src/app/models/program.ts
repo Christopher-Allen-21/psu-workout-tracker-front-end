@@ -1,3 +1,5 @@
+import { Workout } from "./workout"
+
 export interface Program {
     pk: string
     sk: string
@@ -6,6 +8,6 @@ export interface Program {
     timesCompleted: number
     customOrPremade: string
     bodyArea: string[]
-    exercises: string[]
+    workouts: Workout[]
     musclesUsed?: string[]
 }

@@ -5,13 +5,14 @@
     justify-content: center;
 }
 
-.sub-header-container {
-    display: flex;
-    justify-content: center;
+.startProgramTable {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.sub-header-container span {
-    margin: 2% 10% 0 10%;
+tbody td, .startProgramTable th {
+    padding: 8px 0 8px 0;
+    text-align: center;
 }
 
 #start-workout-button {

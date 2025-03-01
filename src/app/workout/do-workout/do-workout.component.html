@@ -12,7 +12,6 @@
                 <tr>
                     <th></th>
                     <th>Name</th>
-                    <th>Description</th>
                     <th>Body Area</th>
                 </tr>
             </thead>
@@ -21,25 +20,29 @@
                     <tr>
                         <td><input type="checkbox"></td>
                         <td (click)="startChosenExercise(exercise)">{{ exercise.name | replaceNull }}</td>
-                        <td (click)="startChosenExercise(exercise)">{{ exercise.description | replaceNull }}</td>
                         <td (click)="startChosenExercise(exercise)">{{ exercise.bodyArea | replaceNull }}</td>
                     </tr>
                 }
                 @if(exercises.length == 0) {
                     <tr>
-                        <td colspan="8">No exercises found.</td>
+                        <td style="text-align: left;" colspan="8">No exercises found.</td>
                     </tr>
                 }
-                <tr>
-                    <td class="tableFooter" colspan="8">{{ exercises.length }} record(s)</td>
-                </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td class="tableFooter" colspan="3">{{ exercises.length }} record(s)</td>
+                </tr>
+            </tfoot>
         </table>
     </span>
 </div>
 
 <div class="sub-header-container">
-    <span class="rounded-button">
+    <div class="rounded-cancel-button" (click)="returnToChooseProgram()">
+        Don't Save
+    </div>
+    <div class="rounded-confirm-button" (click)="saveWorkout()">
         Finished
-    </span>
+    </div>
 </div>

@@ -1,11 +1,11 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideState, provideStore, StoreModule } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 import { appStateReducer } from './store/app.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 

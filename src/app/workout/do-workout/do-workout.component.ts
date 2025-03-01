@@ -8,6 +8,9 @@ import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { selectChosenProgram } from '../../store/app.selector';
+import { SetChosenExercise } from '../../store/app.action';
+import { Workout } from '../../models/workout';
+import e from 'express';
 
 @Component({
   selector: 'app-do-workout',
@@ -18,6 +21,7 @@ import { selectChosenProgram } from '../../store/app.selector';
 export class DoWorkoutComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
   program: Program = null
+  workouts: Workout[] = []
   exercises: Exercise[] = []
 
   constructor(
@@ -31,22 +35,35 @@ export class DoWorkoutComponent {
       this.program = data
     })
 
-    this.getPrograms()
+    this.workouts = this.program.workouts
+
+    this.getExercises()
   }
 
-  getPrograms(): Observable<Exercise[]> {
+  getExercises(): void {
     let url: string = this.baseUrl + 'exercises/'
-    let exercisesObservable: Observable<Exercise[]>
     let exercises: Exercise[] = []
 
     this.httpClient.get<Exercise>(url).subscribe(res => {
       let responseObject = {...res}
       exercises = responseObject['Items']
+      console.log(this.exercises)
 
-      this.exercises = exercises.filter((item) => this.program.exercises.includes(item.pk)).sort((a,b) => a.pk < b.pk ? -1 : 1)
+      // this.exercises = exercises.filter((item) => this.program.exercises.includes(item.pk)).sort((a,b) => a.pk < b.pk ? -1 : 1)
+
+      
+      for(let exercise of exercises) {
+        for(let workoutExercise of this.workouts) {
+          console.log("!!!!!!!!")
+          console.log(exercise.pk)
+          console.log(workoutExercise.exercise)
+          if(exercise.pk === workoutExercise.exercise.pk) {
+            this.exercises.push(exercise)
+          }
+        }
+      }
+
     })
-
-    return exercisesObservable
   }
 
   returnToChooseProgram(): void {
@@ -54,7 +71,15 @@ export class DoWorkoutComponent {
   }
 
   startChosenExercise(exercise: Exercise): void {
-    console.log(exercise)
+    this.store.dispatch(
+      SetChosenExercise({
+        chosenExercise: exercise
+      })
+    )
     this.router.navigateByUrl('workout/exercise');
+  }
+
+  saveWorkout(): void {
+    // save workout
   }
 }

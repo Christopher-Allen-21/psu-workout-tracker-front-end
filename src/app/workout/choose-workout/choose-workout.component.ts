@@ -29,7 +29,7 @@ export class ChooseWorkoutComponent {
     this.getPrograms()
   }
 
-  getPrograms(): Observable<Program[]> {
+  getPrograms(): void {
     let url: string = this.baseUrl + 'programs/'
     let programsObservable: Observable<Program[]>
     let programs: Program[] = []
@@ -41,8 +41,6 @@ export class ChooseWorkoutComponent {
       this.customPrograms = programs.filter((item) => item.customOrPremade === 'Custom').sort((a,b) => a.pk < b.pk ? -1 : 1)
       this.premadePrograms = programs.filter((item) => item.customOrPremade === 'Premade').sort((a,b) => a.pk < b.pk ? -1 : 1)
     })
-
-    return programsObservable
   }
 
   returnToStartWorkout(): void {
@@ -55,7 +53,6 @@ export class ChooseWorkoutComponent {
         chosenProgram: program
       })
     )
-    console.log(program)
     this.router.navigateByUrl('workout/in-progress');
   }
 }

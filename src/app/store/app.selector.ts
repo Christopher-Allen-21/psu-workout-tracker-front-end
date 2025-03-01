@@ -3,12 +3,18 @@ import { createFeatureSelector, createSelector } from "@ngrx/store"
 import { AppState } from "./app.state"
 
 
-const getAppState = createFeatureSelector<AppState>('appState')
+const selectAppState = createFeatureSelector<AppState>('appState')
 
 export const selectChosenProgram = createSelector(
-    getAppState,
+    selectAppState,
     (state) => {
-        console.log(state)
         return state.chosenProgram
+    }
+)
+
+export const selectChosenExercise = createSelector(
+    selectAppState,
+    (state) => {
+        return state.chosenExercise
     }
 )

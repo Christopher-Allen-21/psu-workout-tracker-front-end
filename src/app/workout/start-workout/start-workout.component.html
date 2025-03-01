@@ -3,17 +3,25 @@
 </div>
 
 <div class="sub-header-container">
-    <span>XXX Reps Completed</span>
-    <span>XXX Sets Completed</span>
-</div>
-
-<div class="sub-header-container">
-    <span>Top Workout Area: XXX</span>
-    <span>Bottom Workout Area: XXX</span>
-</div>
-
-<div class="sub-header-container">
-    <span class="rounded-button" (click)="startWorkout()">
-        Start Workout
+    <span>
+        <table class="startProgramTable">
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>XXX Reps Completed</td>
+                    <td>XXX Sets Completed</td>
+                </tr>
+                <tr>
+                    <td>Top Workout Area: XXX</td>
+                    <td>Bottom Workout Area: XXX</td>
+                </tr>
+            </tbody>
+        </table>
     </span>
+</div>
+
+<div class="sub-header-container">
+    <div class="rounded-confirm-button" (click)="startWorkout()">
+        Start Workout
+    </div>
 </div>
