@@ -7,7 +7,7 @@ import { Exercise } from '../../models/exercise';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
-import { getChosenProgram } from '../../store/app.selector';
+import { selectChosenProgram } from '../../store/app.selector';
 
 @Component({
   selector: 'app-do-workout',
@@ -27,7 +27,7 @@ export class DoWorkoutComponent {
   ) {}
 
   ngOnInit(): void {
-    this.store.select(getChosenProgram).subscribe((data) => {
+    this.store.select(selectChosenProgram).subscribe((data) => {
       this.program = data
     })
 

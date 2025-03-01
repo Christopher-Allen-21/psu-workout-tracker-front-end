@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideStore, StoreModule } from '@ngrx/store';
+import { provideState, provideStore, StoreModule } from '@ngrx/store';
 import { appStateReducer } from './store/app.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
@@ -13,8 +13,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),
     provideHttpClient(), provideAnimationsAsync(),
-    // provideStore({ appReducer: appStateReducer }),
-    importProvidersFrom(StoreModule.forRoot(appStateReducer)),
+    provideStore({ appReducer: appStateReducer }),
+    provideState({ name: 'appState', reducer: appStateReducer}), // this line is super important!! Must match what's in ngrx selector
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 ]
 

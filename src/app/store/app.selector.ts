@@ -5,7 +5,7 @@ import { AppState } from "./app.state"
 
 const getAppState = createFeatureSelector<AppState>('appState')
 
-export const getChosenProgram = createSelector(
+export const selectChosenProgram = createSelector(
     getAppState,
     (state) => {
         console.log(state)

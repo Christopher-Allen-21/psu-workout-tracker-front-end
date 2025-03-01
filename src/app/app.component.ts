@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, importProvidersFrom } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs'
 import { NgClass } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { appStateReducer } from './store/app.reducer';
 
 
 @Component({
