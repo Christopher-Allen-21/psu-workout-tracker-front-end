@@ -41,13 +41,13 @@ export class DoWorkoutComponent {
 
   getExercises(): void {
     let url: string = this.baseUrl + 'exercises/'
-    let exercises: Exercise[] = []
+    let allExercises: Exercise[] = []
 
     this.httpClient.get<Exercise>(url).subscribe(res => {
       let responseObject = {...res}
-      exercises = responseObject['Items']
+      allExercises = responseObject['Items']
       
-      for(let exercise of exercises) {
+      for(let exercise of allExercises) {
         for(let workoutExercise of this.workouts) {
           if(exercise.pk === workoutExercise.exercise.pk) {
             this.exercises.push(exercise)
@@ -55,11 +55,8 @@ export class DoWorkoutComponent {
         }
       }
 
-      console.log(this.exercises)
       this.exercises.sort((a,b) => a.pk < b.pk ? -1 : 1)
     })
-
-    
   }
 
   returnToChooseProgram(): void {

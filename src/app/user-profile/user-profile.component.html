@@ -31,7 +31,10 @@
                 </tr>
             }
             <tr>
-                <td class="tableFooter" colspan="8">{{ users?.length }} record(s)</td>
+                <td class="tableFooter" colspan="8">
+                    {{ users?.length }} 
+                    record@if(users.length !== 1) {s}
+                </td>
             </tr>
         </tbody>
     </table>

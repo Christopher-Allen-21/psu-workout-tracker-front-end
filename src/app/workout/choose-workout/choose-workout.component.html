@@ -28,10 +28,15 @@
                         <td colspan="8">No programs found.</td>
                     </tr>
                 }
-                <tr>
-                    <td class="tableFooter" colspan="8">{{ customPrograms.length }} record(s)</td>
-                </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td class="tableFooter" colspan="8">
+                        {{ customPrograms.length }} 
+                        record@if(customPrograms.length !== 1) {s}
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </span>
 </div>
@@ -66,10 +71,15 @@
                         <td colspan="8">No programs found.</td>
                     </tr>
                 }
-                <tr>
-                    <td class="tableFooter" colspan="8">{{ premadePrograms.length }} record(s)</td>
-                </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td class="tableFooter" colspan="8">
+                        {{ premadePrograms.length }} 
+                        record@if(premadePrograms.length !== 1) {s}
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </span>
 </div>
