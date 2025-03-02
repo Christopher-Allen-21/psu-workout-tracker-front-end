@@ -1,50 +1,27 @@
 @import "../utilities/styling-variables";
 
-#userTab {
-    margin: 1%;
-}
-
-#userTable {
+.programsTable {
     border-collapse: collapse;
-    width: 75%;
+    width: 100%;
     border: 1px solid $base-color;
 }
 
-.tableOfTables {
-    padding-right: 20px;
-}
-
-#userTable td, #userTable th, .tableFooter {
+tbody td, .programsTable th {
     padding: 8px;
+    text-align: center;
 }
   
-#userTable tr:nth-child(even){
+.programsTable tr:nth-child(even){
     background-color: #f2f2f2;
 }
 
-#userTable th, .tableFooter {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  text-align: left;
+.programsTable th, .tableFooter {
+  padding: 8px 0 8px 0;
   background-color: $base-color;
   color: white;
 }
 
-.button {
-    margin: 10px 4px 0 4px;
-    width: 100px;
-    padding: 2px;
-    border: 1px solid black;
-    background-color: gray;
-    color: white;
-    text-align: center;
-}
-
-.button:hover {
-    cursor: pointer;
-}
-
-.modifyUser:hover {
-    text-decoration: underline;
-    cursor: pointer;
+tfoot td {
+    text-align: left;
+    padding-left: 8px;
 }

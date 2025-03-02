@@ -10,7 +10,7 @@ import {
   selectChosenProgram, 
   selectCompletedExercises 
 } from '../../store/app.selector';
-import { SetChosenWorkoutAndExercise } from '../../store/app.action';
+import { ClearCompletedExercises, SetChosenWorkoutAndExercise } from '../../store/app.action';
 import { Workout } from '../../models/workout';
 
 @Component({
@@ -65,10 +65,7 @@ export class ChooseExerciseComponent {
   }
 
   isExerciseCompleted(exerciseInTable: Exercise): boolean {
-    console.log(exerciseInTable)
     for(let exercise of this.completedExercises) {
-      console.log(exercise.pk)
-      console.log(exerciseInTable.pk)
       if(exercise.pk == exerciseInTable.pk) {
         return true
       }
@@ -78,7 +75,8 @@ export class ChooseExerciseComponent {
   }
 
   returnToChooseProgram(): void {
-    this.router.navigateByUrl('workout/select');
+    this.store.dispatch(ClearCompletedExercises())
+    this.router.navigateByUrl('workout/select')
   }
 
   startChosenExercise(exercise: Exercise): void {
@@ -90,7 +88,7 @@ export class ChooseExerciseComponent {
         chosenExercise: exercise
       })
     )
-    this.router.navigateByUrl('workout/exercise');
+    this.router.navigateByUrl('workout/exercise')
   }
 
   saveWorkout(): void {

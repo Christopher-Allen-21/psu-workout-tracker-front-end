@@ -6,7 +6,8 @@ import { Exercise } from "../models/exercise";
 export enum ActionType {
     SetChosenProgram = 'SetChosenProgram',
     SetChosenWorkoutAndExercise = 'SetChosenWorkoutAndExercise',
-    AddCompletedExercise = 'AddCompletedExercise'
+    AddCompletedExercise = 'AddCompletedExercise',
+    ClearCompletedExercises = 'ClearCompletedExercises'
 }
 
 export const SetChosenProgram = createAction(
@@ -27,4 +28,8 @@ export const AddCompletedExercise = createAction(
     props<{ 
         completedExercise: Exercise
     }>()
+)
+
+export const ClearCompletedExercises = createAction(
+    ActionType.ClearCompletedExercises
 )

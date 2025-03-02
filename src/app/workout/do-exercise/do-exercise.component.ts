@@ -38,7 +38,7 @@ export class DoExerciseComponent {
     })
   }
 
-  returnToChooseProgram(finishedExercise: boolean): void {
+  returnToChooseExercise(finishedExercise: boolean): void {
     if(finishedExercise) {
       this.store.dispatch(AddCompletedExercise({
         completedExercise: this.exercise

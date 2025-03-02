@@ -1,136 +1,132 @@
-<div id="userTab">
-
-    <b>Users</b>
-    <table id="userTable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Birth Date</th>
-                <th>Email</th>
-                <th>Height</th>
-                <th>Weight</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(user of users; track user) {
+<div class="sub-header-container">
+    <span>
+        <b>Users</b>
+        <table class="programsTable">
+            <thead>
                 <tr>
-                    <td>{{ user.pk }}</td>
-                    <td>{{ user.firstName }} {{ user.lastName }}</td>
-                    <td>{{ user.birthDate }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.height | replaceNull }}</td>
-                    <td>{{ user.weight | replaceNull }}</td>
-                    <td class="modifyUser" (click)="deleteUser(user.pk)">Delete</td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Birth Date</th>
+                    <th>Email</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th></th>
                 </tr>
-            }
-            @if(users?.length == 0) {
+            </thead>
+            <tbody>
+                @for(user of users; track user) {
+                    <tr>
+                        <td>{{ user.pk }}</td>
+                        <td>{{ user.firstName }} {{ user.lastName }}</td>
+                        <td>{{ user.birthDate }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.height | replaceNull }}</td>
+                        <td>{{ user.weight | replaceNull }}</td>
+                        <td class="modifyUser" (click)="deleteUser(user.pk)">Delete</td>
+                    </tr>
+                }
+                @if(users?.length == 0) {
+                    <tr>
+                        <td colspan="8">No users found.</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
                 <tr>
-                    <td colspan="8">No users found.</td>
+                    <td class="tableFooter" colspan="8">
+                        {{ users?.length }} 
+                        record@if(users.length !== 1) {s}
+                    </td>
                 </tr>
-            }
-            <tr>
-                <td class="tableFooter" colspan="8">
-                    {{ users?.length }} 
-                    record@if(users.length !== 1) {s}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <table>
-        <thead></thead>
-        <tbody>
-            <tr>
-                <td class="tableOfTables">
-                    <table class="createUpdateUserTable">
-                        <thead>
-                            <tr>
-                                <th>Create New User</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Id:</td>
-                                <td><input [(ngModel)]="createId"></td>
-                            </tr>
-                            <tr>
-                                <td>First Name:</td>
-                                <td><input [(ngModel)]="firstNameInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Last Name:</td>
-                                <td><input [(ngModel)]="lastNameInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Birth Date:</td>
-                                <td><input [(ngModel)]="birthDateInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td><input [(ngModel)]="emailInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Height (in):</td>
-                                <td><input type="number" [(ngModel)]="heightInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Weight (lbs):</td>
-                                <td><input type="number" [(ngModel)]="weightInput"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                
-                    <div class="button" (click)="createUser()">
-                        Create
-                    </div>
-                </td>
-                <td class="tableOfTables"> 
-                    <table class="createUpdateUserTable">
-                        <thead>
-                            <tr>
-                                <th>Update User</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Id:</td>
-                                <td><input [(ngModel)]="updateIdInput"></td>
-                            </tr>
-                            <tr>
-                                <td>First Name:</td>
-                                <td><input [(ngModel)]="updateFirstNameInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Last Name:</td>
-                                <td><input [(ngModel)]="updateLastNameInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Birth Date:</td>
-                                <td><input [(ngModel)]="updateBirthDateInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td><input [(ngModel)]="updateEmailInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Height (in):</td>
-                                <td><input type="number" [(ngModel)]="updateHeightInput"></td>
-                            </tr>
-                            <tr>
-                                <td>Weight (lbs):</td>
-                                <td><input type="number" [(ngModel)]="updateWeightInput"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                
-                    <div class="button" (click)="updateUser()">
-                        Update
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            </tfoot>
+        </table>
+    </span>
+</div>
 
+<div class="sub-header-container">
+    <span>
+        <b>Create New User</b>
+        <table class="programsTable">
+            <thead>
+                <th colspan="2">&nbsp;</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id:</td>
+                    <td><input [(ngModel)]="createId"></td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input [(ngModel)]="firstNameInput"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input [(ngModel)]="lastNameInput"></td>
+                </tr>
+                <tr>
+                    <td>Birth Date:</td>
+                    <td><input [(ngModel)]="birthDateInput"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input [(ngModel)]="emailInput"></td>
+                </tr>
+                <tr>
+                    <td>Height (in):</td>
+                    <td><input type="number" [(ngModel)]="heightInput"></td>
+                </tr>
+                <tr>
+                    <td>Weight (lbs):</td>
+                    <td><input type="number" [(ngModel)]="weightInput"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="width: 25%;" class="rounded-confirm-button" (click)="createUser()">
+            Create
+        </div>
+    </span>
+
+    <span>
+        <b>Update User</b>
+        <table class="programsTable">
+            <thead>
+                <th colspan="2">&nbsp;</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id:</td>
+                    <td><input [(ngModel)]="updateIdInput"></td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input [(ngModel)]="updateFirstNameInput"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input [(ngModel)]="updateLastNameInput"></td>
+                </tr>
+                <tr>
+                    <td>Birth Date:</td>
+                    <td><input [(ngModel)]="updateBirthDateInput"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input [(ngModel)]="updateEmailInput"></td>
+                </tr>
+                <tr>
+                    <td>Height (in):</td>
+                    <td><input type="number" [(ngModel)]="updateHeightInput"></td>
+                </tr>
+                <tr>
+                    <td>Weight (lbs):</td>
+                    <td><input type="number" [(ngModel)]="updateWeightInput"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="width: 25%;" class="rounded-confirm-button" (click)="updateUser()">
+            Update
+        </div>
+    </span>
 </div>

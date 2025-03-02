@@ -2,7 +2,8 @@ import { createReducer, on } from "@ngrx/store";
 import { 
     SetChosenWorkoutAndExercise, 
     SetChosenProgram,
-    AddCompletedExercise
+    AddCompletedExercise,
+    ClearCompletedExercises
  } from "./app.action";
 import { initialAppState } from "./app.state";
 
@@ -27,6 +28,12 @@ const _appStateReducer = createReducer(
         return {
             ...state,
             completedExercises: [...state.completedExercises, action.completedExercise],
+        }
+    }),
+    on(ClearCompletedExercises, (state, action) => {
+        return {
+            ...state,
+            completedExercises: [],
         }
     })
 )
