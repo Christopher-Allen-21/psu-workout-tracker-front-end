@@ -26,7 +26,7 @@ const _appStateReducer = createReducer(
     on(AddCompletedExercise, (state, action) => {
         return {
             ...state,
-            completedExercise: [...state.completedExercises, action.completedExercise],
+            completedExercises: [...state.completedExercises, action.completedExercise],
         }
     })
 )

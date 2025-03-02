@@ -6,7 +6,10 @@ import { Exercise } from '../../models/exercise';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
-import { selectChosenProgram } from '../../store/app.selector';
+import { 
+  selectChosenProgram, 
+  selectCompletedExercises 
+} from '../../store/app.selector';
 import { SetChosenWorkoutAndExercise } from '../../store/app.action';
 import { Workout } from '../../models/workout';
 
@@ -21,6 +24,7 @@ export class ChooseExerciseComponent {
   program: Program = null
   workouts: Workout[] = []
   exercises: Exercise[] = []
+  completedExercises: Exercise[] = []
 
   constructor(
     private router: Router, 
@@ -31,6 +35,9 @@ export class ChooseExerciseComponent {
   ngOnInit(): void {
     this.store.select(selectChosenProgram).subscribe((data) => {
       this.program = data
+    })
+    this.store.select(selectCompletedExercises).subscribe((data) => {
+      this.completedExercises = data
     })
 
     this.workouts = this.program.workouts
@@ -57,7 +64,16 @@ export class ChooseExerciseComponent {
     })
   }
 
-  isExerciseCompleted(): boolean {
+  isExerciseCompleted(exerciseInTable: Exercise): boolean {
+    console.log(exerciseInTable)
+    for(let exercise of this.completedExercises) {
+      console.log(exercise.pk)
+      console.log(exerciseInTable.pk)
+      if(exercise.pk == exerciseInTable.pk) {
+        return true
+      }
+    }
+
     return false
   }
 

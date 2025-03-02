@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(), provideAnimationsAsync(),
     provideStore({ appReducer: appStateReducer }),
     provideState({ name: 'appState', reducer: appStateReducer}), // this line is super important!! Must match what's in ngrx selector
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+    provideStoreDevtools({ maxAge: 25 })
 ]
 
 };

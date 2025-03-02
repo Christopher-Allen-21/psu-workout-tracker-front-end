@@ -112,9 +112,7 @@ export class UserProfileComponent {
   }
 
   deleteUser(id): void {
-    console.log(id)
     let url = this.baseUrl + 'users/' + id + '/'
-    console.log(url)
 
     this.httpClient.delete(url, {observe: 'response'}).subscribe({
       next: (res) => {

@@ -6,7 +6,6 @@ import { AppState } from '../../store/app.state';
 import { 
   selectChosenWorkout, 
   selectChosenExercise,
-  selectCompletedExercises
  } from '../../store/app.selector';
 import { Workout } from '../../models/workout';
 import { Exercise } from '../../models/exercise';
@@ -23,7 +22,6 @@ export class DoExerciseComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
   workout: Workout = null
   exercise: Exercise = null
-  completedExercises: Exercise[] = []
 
   constructor(
     private router: Router, 
@@ -38,13 +36,9 @@ export class DoExerciseComponent {
     this.store.select(selectChosenExercise).subscribe((data) => {
       this.exercise = data
     })
-    this.store.select(selectCompletedExercises).subscribe((data) => {
-        this.completedExercises = data
-      })
   }
 
   returnToChooseProgram(finishedExercise: boolean): void {
-    console.log(finishedExercise)
     if(finishedExercise) {
       this.store.dispatch(AddCompletedExercise({
         completedExercise: this.exercise
