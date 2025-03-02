@@ -7,7 +7,9 @@ export enum ActionType {
     SetChosenProgram = 'SetChosenProgram',
     SetChosenWorkoutAndExercise = 'SetChosenWorkoutAndExercise',
     AddCompletedExercise = 'AddCompletedExercise',
-    ClearCompletedExercises = 'ClearCompletedExercises'
+    ClearCompletedExercises = 'ClearCompletedExercises',
+    SetSetsAndReps = 'SetSetsAndReps',
+    SetTopAndBottomPrograms = 'SetTopAndBottomPrograms'
 }
 
 export const SetChosenProgram = createAction(
@@ -32,4 +34,20 @@ export const AddCompletedExercise = createAction(
 
 export const ClearCompletedExercises = createAction(
     ActionType.ClearCompletedExercises
+)
+
+export const SetSetsAndReps = createAction(
+    ActionType.SetSetsAndReps,
+    props<{ 
+        repsCompleted: number,
+        setsCompleted: number,
+    }>()
+)
+
+export const SetTopAndBottomPrograms = createAction(
+    ActionType.SetTopAndBottomPrograms,
+    props<{ 
+        topProgram: Program
+        bottomProgram: Program 
+    }>()
 )

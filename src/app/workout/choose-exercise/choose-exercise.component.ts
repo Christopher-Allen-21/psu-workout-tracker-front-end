@@ -8,14 +8,19 @@ import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { 
   selectChosenProgram, 
-  selectCompletedExercises 
+  selectCompletedExercises, 
+  selectCurrentUser
 } from '../../store/app.selector';
 import { ClearCompletedExercises, SetChosenWorkoutAndExercise } from '../../store/app.action';
 import { Workout } from '../../models/workout';
+import { WorkoutHistory } from '../../models/workoutHistory';
+import { DatePipe } from '@angular/common';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'choose-exercise',
   imports: [ReplaceNullPipe],
+  providers: [DatePipe],
   templateUrl: './choose-exercise.component.html',
   styleUrl: './choose-exercise.component.scss'
 })
@@ -25,14 +30,22 @@ export class ChooseExerciseComponent {
   workouts: Workout[] = []
   exercises: Exercise[] = []
   completedExercises: Exercise[] = []
+  user: User
+  currentDate: string
 
   constructor(
     private router: Router, 
     private readonly httpClient: HttpClient,
-    private readonly store: Store<AppState>
-  ) {}
+    private readonly store: Store<AppState>,
+    private datePipe: DatePipe
+  ) {
+    this.currentDate = this.datePipe.transform(new Date(), 'yyyy/MM/dd');
+  }
 
   ngOnInit(): void {
+    this.store.select(selectCurrentUser).subscribe((data) => {
+          this.user = data
+        })
     this.store.select(selectChosenProgram).subscribe((data) => {
       this.program = data
     })
@@ -76,7 +89,7 @@ export class ChooseExerciseComponent {
 
   returnToChooseProgram(): void {
     this.store.dispatch(ClearCompletedExercises())
-    this.router.navigateByUrl('workout/select')
+    this.router.navigateByUrl('workout/selectProgram')
   }
 
   startChosenExercise(exercise: Exercise): void {
@@ -92,6 +105,25 @@ export class ChooseExerciseComponent {
   }
 
   saveWorkout(): void {
-    // save workout
+    let url = this.baseUrl + 'workout-history/'
+    
+    let request: WorkoutHistory = {
+      pk: this.datePipe.transform(new Date(), 'yyyyMMdd') + '#' + this.program.name,
+      sk: this.datePipe.transform(new Date(), 'yyyyMMdd') + '#' + this.program.name,
+      dateOfWorkout:  this.currentDate,
+      exercises: [],
+      feeling: "Mid",
+      program: this.program.pk,
+      userId: this.user.pk,
+    }
+
+    this.httpClient.post(url, request, {observe: 'response'}).subscribe({
+      next: (res) => {
+        alert("Response status code: " + JSON.stringify(res.status) + "\nWorkout History created successfully")
+      }
+    })
+
+    this.returnToChooseProgram()
   }
+
 }

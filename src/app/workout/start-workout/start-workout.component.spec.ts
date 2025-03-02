@@ -39,7 +39,7 @@ describe('StartWorkoutComponent', () => {
     component.startWorkout()
     const url = spy.calls.first().args[0]
 
-    expect(url).toBe('workout/select')
+    expect(url).toBe('workout/selectProgram')
   })
 
 

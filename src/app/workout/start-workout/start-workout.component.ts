@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { WorkoutHistory } from '../../models/workoutHistory';
 import { Program } from '../../models/program';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
+import { selectCurrentUser, selectStartWorkoutStats } from '../../store/app.selector';
+import { SetSetsAndReps, SetTopAndBottomPrograms } from '../../store/app.action';
 
 @Component({
   selector: 'app-start-workout',
@@ -16,16 +18,7 @@ import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 })
 export class StartWorkoutComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
-  user: User = {
-    "pk": "0",
-    "sk": "0",
-    "birthDate": "03/22/1996",
-    "email": "callen7908@yahoo.com",
-    "firstName": "Chris",
-    "height": 69,
-    "lastName": "Allen",
-    "weight": 180
-   }
+  user: User
   workoutHistory: WorkoutHistory[] = []
   programs: Program[] = []
   repsCompleted: number = 0
@@ -40,11 +33,21 @@ export class StartWorkoutComponent {
   ) {}
 
   ngOnInit(): void {
-      this.getPrograms()
-      this.getWorkoutHistoryByUser()
-      this.calculateSetsAndReps()
-      this.calculateTopAndBottomPrograms()
-    }
+    this.store.select(selectCurrentUser).subscribe((data) => {
+      this.user = data
+    })
+    this.store.select(selectStartWorkoutStats).subscribe((data) => {
+      this.repsCompleted = data.repsCompleted
+      this.setsCompleted = data.setsCompleted
+      this.topProgram = data.topProgram
+      this.bottomProgram = data.bottomProgram
+    })
+
+    this.getPrograms()
+    this.getWorkoutHistoryByUser()
+    this.calculateSetsAndReps()
+    this.calculateTopAndBottomPrograms()
+  }
   
   getWorkoutHistoryByUser(): void {
     let url: string = this.baseUrl + 'workout-history/user/' + this.user.pk
@@ -71,16 +74,23 @@ export class StartWorkoutComponent {
     topProgramId = Math.max(...this.workoutHistory.map(item => <number><unknown>item.program))
     bottomProgramId = Math.min(...this.workoutHistory.map(item => <number><unknown>item.program))
 
-    this.topProgram = this.programs.filter((item) => item.pk == <string><unknown>topProgramId)[0]
-    this.bottomProgram = this.programs.filter((item) => item.pk == <string><unknown>bottomProgramId)[0]
+    let topProgram = this.programs.filter((item) => item.pk == <string><unknown>topProgramId)[0]
+    let bottomProgram = this.programs.filter((item) => item.pk == <string><unknown>bottomProgramId)[0]
+
+    this.store.dispatch(SetTopAndBottomPrograms({
+      topProgram: topProgram,
+      bottomProgram: bottomProgram
+    }))
   }
 
   startWorkout(): void {
-    this.router.navigateByUrl('workout/select');
+    this.router.navigateByUrl('workout/selectProgram');
   }
 
   calculateSetsAndReps(): void {
     let programs: Program[] = []
+    let repsCompleted: number = 0
+    let setsCompleted: number = 0
 
     // get number of programs completd
     for(let workout of this.workoutHistory) {
@@ -95,12 +105,18 @@ export class StartWorkoutComponent {
     for(let program of programs) {
       for(let workout of program.workouts) {
         for(let repSchema of workout.repSchema) {
-          this.repsCompleted += repSchema.reps
+          repsCompleted += repSchema.reps
         }
-        this.setsCompleted += workout.repSchema.length
+        setsCompleted += workout.repSchema.length
       }
     }
+
+    this.store.dispatch(SetSetsAndReps({
+      repsCompleted: repsCompleted,
+      setsCompleted: setsCompleted
+    }))
   }
 
+  
 
 }

@@ -1,0 +1,36 @@
+<div class="sub-header-container">
+    <span>
+        <b>Workout History for {{ user.firstName }}</b>
+        <table class="programsTable">
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th>Date</th>
+                    <th>Workout Felt</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(workout of workoutHistory; track workout) {
+                    <tr>
+                        <td>{{ workout.pk | replaceNull }}</td>
+                        <td>{{ workout.dateOfWorkout | replaceNull }}</td>
+                        <td>{{ workout.feeling | replaceNull }}</td>
+                    </tr>
+                }
+                @if(workoutHistory.length == 0) {
+                    <tr>
+                        <td style="text-align: left;" colspan="8">No workouts found.</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="tableFooter" colspan="8">
+                        {{ workoutHistory.length }} 
+                        record@if(workoutHistory.length !== 1) {s}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </span>
+</div>

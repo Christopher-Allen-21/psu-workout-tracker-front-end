@@ -3,7 +3,9 @@ import {
     SetChosenWorkoutAndExercise, 
     SetChosenProgram,
     AddCompletedExercise,
-    ClearCompletedExercises
+    ClearCompletedExercises,
+    SetSetsAndReps,
+    SetTopAndBottomPrograms
  } from "./app.action";
 import { initialAppState } from "./app.state";
 
@@ -34,6 +36,20 @@ const _appStateReducer = createReducer(
         return {
             ...state,
             completedExercises: [],
+        }
+    }),
+    on(SetSetsAndReps, (state, action) => {
+        return {
+            ...state,
+            repsCompleted: action.repsCompleted,
+            setsCompleted: action.setsCompleted
+        }
+    }),
+    on(SetTopAndBottomPrograms, (state, action) => {
+        return {
+            ...state,
+            topProgram: action.topProgram,
+            bottomProgram: action.bottomProgram
         }
     })
 )

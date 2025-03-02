@@ -18,7 +18,7 @@ export class AppComponent {
 
   routerLinks: string[] = [
     'workout',
-    'programs',
+    'workout-history',
     'user-profile'
   ]
 

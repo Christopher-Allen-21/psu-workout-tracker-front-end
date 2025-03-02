@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ProgramsComponent } from './programs/programs.component';
+import { WorkoutHistoryComponent } from './workout-history/workout-history.component';
 import { StartWorkoutComponent } from './workout/start-workout/start-workout.component';
 import { ChooseWorkoutComponent } from './workout/choose-program/choose-program.component';
 import { ChooseExerciseComponent } from './workout/choose-exercise/choose-exercise.component';
@@ -11,11 +11,10 @@ export const routes: Routes = [
         path: '', component: StartWorkoutComponent
     },
     {
-        path: 'workout', 
-        component: StartWorkoutComponent,
+        path: 'workout', component: StartWorkoutComponent,
     },
     {
-        path: 'workout/select', component: ChooseWorkoutComponent
+        path: 'workout/selectProgram', component: ChooseWorkoutComponent
     },
     {
         path: 'workout/in-progress', component: ChooseExerciseComponent
@@ -24,7 +23,7 @@ export const routes: Routes = [
         path: 'workout/exercise', component: DoExerciseComponent
     },
     {
-        path: 'programs', component: ProgramsComponent
+        path: 'workout-history', component: WorkoutHistoryComponent
     },
     {
         path: 'user-profile', component: UserProfileComponent

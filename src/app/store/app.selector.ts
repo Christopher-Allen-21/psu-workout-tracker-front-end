@@ -12,6 +12,13 @@ export const selectChosenProgram = createSelector(
     }
 )
 
+export const selectCurrentUser = createSelector(
+    selectAppState,
+    (state) => {
+        return state.currentUser
+    }
+)
+
 export const selectChosenWorkout = createSelector(
     selectAppState,
     (state) => {
@@ -30,5 +37,17 @@ export const selectCompletedExercises = createSelector(
     selectAppState,
     (state) => {
         return state.completedExercises
+    }
+)
+
+export const selectStartWorkoutStats = createSelector(
+    selectAppState,
+    (state) => {
+        return {
+            repsCompleted: state.repsCompleted,
+            setsCompleted: state.setsCompleted,
+            topProgram: state.topProgram,
+            bottomProgram: state.bottomProgram,
+        }
     }
 )
