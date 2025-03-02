@@ -25,3 +25,10 @@ export const selectChosenExercise = createSelector(
         return state.chosenExercise
     }
 )
+
+export const selectCompletedExercises = createSelector(
+    selectAppState,
+    (state) => {
+        return state.completedExercises
+    }
+)

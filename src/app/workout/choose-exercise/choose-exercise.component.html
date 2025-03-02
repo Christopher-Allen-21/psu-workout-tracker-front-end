@@ -1,42 +1,51 @@
 <div class="back-button-container">
     <span (click)="returnToChooseProgram()">
-        <-- Back to Workout
+        <-- Back to Choose Program
     </span>
-</div>
-
-<div class="sub-header-container">
-    <b>{{ exercise.name }}</b>
-</div>
-
-
-<div style="margin: 1% 0 0 0" class="sub-header-container">
-    {{ exercise.description }}
 </div>
 
 <div class="sub-header-container">
     <span>
+        <b>{{program.name}}</b>
         <table class="programsTable">
             <thead>
                 <tr>
                     <th></th>
-                    <th>Reps</th>
-                    <th>Weight</th>
+                    <th>Name</th>
+                    <th>Body Area</th>
                 </tr>
             </thead>
             <tbody>
-                @for(set of workout.repSchema; track set) {
+                @for(exercise of exercises; track exercise) {
                     <tr>
-                        <td><input type="checkbox"></td>
-                        <td>{{ set.reps | replaceNull }}</td>
-                        <td>{{ set.weight | replaceNull }}</td>
+                        <td><input checked="isExerciseCompleted()" type="checkbox"></td>
+                        <td (click)="startChosenExercise(exercise)">{{ exercise.name | replaceNull }}</td>
+                        <td (click)="startChosenExercise(exercise)">{{ exercise.bodyArea | replaceNull }}</td>
                     </tr>
                 }
-                @if(workout.repSchema.length == 0) {
+                @if(exercises.length == 0) {
                     <tr>
-                        <td colspan="3">No exercises found.</td>
+                        <td style="text-align: left;" colspan="8">No exercises found.</td>
                     </tr>
                 }
             </tbody>
+            <tfoot>
+                <tr>
+                    <td class="tableFooter" colspan="3">
+                        {{ exercises.length }} 
+                        record@if(exercises.length !== 1) {s}
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </span>
+</div>
+
+<div class="sub-header-container">
+    <div class="rounded-cancel-button" (click)="returnToChooseProgram()">
+        Don't Save
+    </div>
+    <div class="rounded-confirm-button" (click)="saveWorkout()">
+        Finished
+    </div>
 </div>

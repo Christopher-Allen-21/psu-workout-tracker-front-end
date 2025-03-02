@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { Program } from '../../models/program';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.state';
-import { selectChosenWorkout, selectChosenExercise } from '../../store/app.selector';
-import { Workout } from '../../models/workout';
 import { Exercise } from '../../models/exercise';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
+import { AppState } from '../../store/app.state';
+import { Store } from '@ngrx/store';
+import { selectChosenProgram } from '../../store/app.selector';
+import { SetChosenWorkoutAndExercise } from '../../store/app.action';
+import { Workout } from '../../models/workout';
 
 @Component({
   selector: 'choose-exercise',
@@ -16,8 +18,9 @@ import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 })
 export class ChooseExerciseComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
-  workout: Workout = null
-  exercise: Exercise = null
+  program: Program = null
+  workouts: Workout[] = []
+  exercises: Exercise[] = []
 
   constructor(
     private router: Router, 
@@ -26,18 +29,55 @@ export class ChooseExerciseComponent {
   ) {}
 
   ngOnInit(): void {
-    this.store.select(selectChosenWorkout).subscribe((data) => {
-      this.workout = data
+    this.store.select(selectChosenProgram).subscribe((data) => {
+      this.program = data
     })
-    this.store.select(selectChosenExercise).subscribe((data) => {
-      this.exercise = data
-    })
-    console.log(this.workout)
-    console.log(this.exercise)
 
+    this.workouts = this.program.workouts
+    this.getExercises()
+  }
+
+  getExercises(): void {
+    let url: string = this.baseUrl + 'exercises/'
+    let allExercises: Exercise[] = []
+
+    this.httpClient.get<Exercise>(url).subscribe(res => {
+      let responseObject = {...res}
+      allExercises = responseObject['Items']
+      
+      for(let exercise of allExercises) {
+        for(let workoutExercise of this.workouts) {
+          if(exercise.pk === workoutExercise.exercise.pk) {
+            this.exercises.push(exercise)
+          }
+        }
+      }
+
+      this.exercises.sort((a,b) => a.pk < b.pk ? -1 : 1)
+    })
+  }
+
+  isExerciseCompleted(): boolean {
+    return false
   }
 
   returnToChooseProgram(): void {
-    this.router.navigateByUrl('workout/in-progress');
+    this.router.navigateByUrl('workout/select');
+  }
+
+  startChosenExercise(exercise: Exercise): void {
+    let chosenWorkout: Workout = this.workouts.filter(workout => workout.exercise.pk === exercise.pk)[0]
+
+    this.store.dispatch(
+      SetChosenWorkoutAndExercise({
+        chosenWorkout: chosenWorkout,
+        chosenExercise: exercise
+      })
+    )
+    this.router.navigateByUrl('workout/exercise');
+  }
+
+  saveWorkout(): void {
+    // save workout
   }
 }

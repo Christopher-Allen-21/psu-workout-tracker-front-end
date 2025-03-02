@@ -25,3 +25,9 @@ tfoot td {
     text-align: left;
     padding-left: 8px;
 }
+
+.programsTable tr:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}

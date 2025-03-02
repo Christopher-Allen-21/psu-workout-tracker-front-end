@@ -1,0 +1,50 @@
+<div class="back-button-container">
+    <span (click)="returnToChooseProgram(false)">
+        <-- Back to Workout
+    </span>
+</div>
+
+<div class="sub-header-container">
+    <b>{{ exercise.name }}</b>
+</div>
+
+
+<div style="margin: 1% 0 0 0" class="sub-header-container">
+    {{ exercise.description }}
+</div>
+
+<div class="sub-header-container">
+    <span>
+        <table class="programsTable">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Reps</th>
+                    <th>Weight</th>
+                    <th>Rest</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(set of workout.repSchema; track set) {
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>{{ set.reps | replaceNull }}</td>
+                        <td>{{ set.weight | replaceNull }}</td>
+                        <td>{{ set.rest | replaceNull }} seconds</td>
+                    </tr>
+                }
+                @if(workout.repSchema.length == 0) {
+                    <tr>
+                        <td colspan="3">No exercises found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </span>
+</div>
+
+<div class="sub-header-container">
+    <div class="rounded-confirm-button" (click)="returnToChooseProgram(true)">
+        Done
+    </div>
+</div>

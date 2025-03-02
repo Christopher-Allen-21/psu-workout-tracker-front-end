@@ -6,10 +6,12 @@ export interface AppState {
     chosenProgram: Program
     chosenWorkout: Workout
     chosenExercise: Exercise
+    completedExercises: Exercise[]
 }
 
 export const initialAppState: AppState = {
     chosenProgram: null,
     chosenWorkout: null,
     chosenExercise: null,
+    completedExercises: []
 }
