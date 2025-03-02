@@ -21,7 +21,7 @@ export class StartWorkoutComponent {
     "sk": "0",
     "birthDate": "03/22/1996",
     "email": "callen7908@yahoo.com",
-    "firstName": "Christopher",
+    "firstName": "Chris",
     "height": 69,
     "lastName": "Allen",
     "weight": 180

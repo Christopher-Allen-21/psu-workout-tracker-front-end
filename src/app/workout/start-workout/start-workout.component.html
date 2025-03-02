@@ -8,12 +8,12 @@
             <thead></thead>
             <tbody>
                 <tr>
-                    <td (click)="getWorkoutHistoryByUser()">{{ repsCompleted | replaceNull }} Reps Completed</td>
-                    <td>{{ setsCompleted | replaceNull }} Sets Completed</td>
+                    <td><b>{{ repsCompleted | replaceNull }}</b> Reps Completed</td>
+                    <td><b>{{ setsCompleted | replaceNull }}</b> Sets Completed</td>
                 </tr>
                 <tr>
-                    <td>Top Program: {{ topProgram?.name | replaceNull }}</td>
-                    <td>Bottom Program: {{ bottomProgram?.name | replaceNull }}</td>
+                    <td>Top Program: <b>{{ topProgram?.name | replaceNull }}</b></td>
+                    <td>Bottom Program: <b>{{ bottomProgram?.name | replaceNull }}</b></td>
                 </tr>
             </tbody>
         </table>
