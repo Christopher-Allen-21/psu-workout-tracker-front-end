@@ -1,6 +1,6 @@
 # PSU Masters Sample Final Project - Front End
 
-- **Objective** - To design, develop, and deploy a project that demonstrates skills and knowledge of web development
+- **Objective** - To design, develop, and deploy a a full-stack application that demonstrates skills and knowledge of web development
 
 # Link to Site
 
