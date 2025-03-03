@@ -34,6 +34,9 @@
   - ![image](https://github.com/user-attachments/assets/ec9e3f08-8837-4b66-a595-e88c1d08c5b2)
   - Confirm everything looks good and then click "Save and deploy"
   - ![image](https://github.com/user-attachments/assets/446782b9-fefd-4829-a84d-48dd24af13df)
+  - Navigate to Hosting tab. Add custom domain (using domain name I bought and have managed on AWS Route 53)
+  - ![image](https://github.com/user-attachments/assets/a9cb5d62-ca23-4c75-aa4c-a83689ccd09e)
+  - ![image](https://github.com/user-attachments/assets/86615f20-0076-4742-bf4f-49284ae4c48d)
 
 - Build
 
