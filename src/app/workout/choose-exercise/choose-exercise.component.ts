@@ -115,6 +115,7 @@ export class ChooseExerciseComponent {
       feeling: "Mid",
       program: this.program.pk,
       userId: this.user.pk,
+      duration: 0,
     }
 
     this.httpClient.post(url, request, {observe: 'response'}).subscribe({

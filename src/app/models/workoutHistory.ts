@@ -6,4 +6,5 @@ export interface WorkoutHistory {
     feeling: string
     program: string
     userId: string
+    duration: number
 }

@@ -4,16 +4,18 @@
         <table class="programsTable">
             <thead>
                 <tr>
-                    <th>Program</th>
                     <th>Date</th>
+                    <th>Program</th>
+                    <th>Duration</th>
                     <th>Workout Felt</th>
                 </tr>
             </thead>
             <tbody>
                 @for(workout of workoutHistory; track workout) {
                     <tr>
-                        <td>{{ workout.pk | replaceNull }}</td>
                         <td>{{ workout.dateOfWorkout | replaceNull }}</td>
+                        <td>{{ workout.pk | replaceNull }}</td>
+                        <td>{{ workout.duration | replaceNull }}</td>
                         <td>{{ workout.feeling | replaceNull }}</td>
                     </tr>
                 }

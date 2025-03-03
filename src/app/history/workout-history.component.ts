@@ -38,7 +38,7 @@ export class WorkoutHistoryComponent {
 
     this.httpClient.get<WorkoutHistory[]>(url).subscribe(res => {
       let responseObject = {...res}
-      this.workoutHistory = responseObject['Items']
+      this.workoutHistory = responseObject['Items'].sort((a,b) => a.dateOfWorkout > b.dateOfWorkout ? -1 : 1)
     })
   }
 }

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { WorkoutHistoryComponent } from './workout-history/workout-history.component';
+import { WorkoutHistoryComponent } from './history/workout-history.component';
 import { StartWorkoutComponent } from './workout/start-workout/start-workout.component';
 import { ChooseWorkoutComponent } from './workout/choose-program/choose-program.component';
 import { ChooseExerciseComponent } from './workout/choose-exercise/choose-exercise.component';

@@ -46,7 +46,7 @@ export class UserProfileComponent {
 
     this.httpClient.get<User>(url).subscribe(res => {
       let responseObject = {...res}
-      this.users = responseObject['Items']
+      this.users = responseObject['Items'].sort((a,b) => a.pk > b.pk ? 1 : -1)
     })
 
     return usersObservable

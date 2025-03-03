@@ -10,7 +10,6 @@
                     <th>Email</th>
                     <th>Height</th>
                     <th>Weight</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +21,6 @@
                         <td>{{ user.email }}</td>
                         <td>{{ user.height | replaceNull }}</td>
                         <td>{{ user.weight | replaceNull }}</td>
-                        <td class="modifyUser" (click)="deleteUser(user.pk)">Delete</td>
                     </tr>
                 }
                 @if(users?.length == 0) {
@@ -46,7 +44,7 @@
 <div class="sub-header-container">
     <span>
         <b>Create New User</b>
-        <table class="programsTable">
+        <table class="createUpdateUserTable">
             <thead>
                 <tr>
                     <th colspan="2">&nbsp;</th>
@@ -91,7 +89,7 @@
 
     <span>
         <b>Update User</b>
-        <table class="programsTable">
+        <table class="createUpdateUserTable">
             <thead>
                 <tr>
                     <th colspan="2">&nbsp;</th>

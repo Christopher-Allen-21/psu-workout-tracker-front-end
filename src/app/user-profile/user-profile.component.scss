@@ -1,12 +1,12 @@
 @import "../utilities/styling-variables";
 
-.programsTable {
+.programsTable, .createUpdateUserTable {
     border-collapse: collapse;
     width: 100%;
     border: 1px solid $base-color;
 }
 
-tbody td, .programsTable th {
+tbody td, .programsTable th, .createUpdateUserTable th {
     padding: 8px;
     text-align: center;
 }
@@ -15,7 +15,7 @@ tbody td, .programsTable th {
     background-color: #f2f2f2;
 }
 
-.programsTable th, .tableFooter {
+.programsTable th, .tableFooter, .createUpdateUserTable th {
   padding: 8px 0 8px 0;
   background-color: $base-color;
   color: white;
