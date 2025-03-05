@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Program } from '../../models/program';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +6,8 @@ import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { SetChosenProgram } from '../../store/app.action';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAnimationsExampleDialog } from './choose-program-popup/choose-program-popup.component';
 
 @Component({
   selector: 'app-choose-program',
@@ -15,13 +17,14 @@ import { SetChosenProgram } from '../../store/app.action';
 })
 export class ChooseWorkoutComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
+  readonly dialog = inject(MatDialog)
   customPrograms: Program[] = []
   premadePrograms: Program[] = []
 
   constructor(
     private router: Router, 
     private readonly httpClient: HttpClient,
-    private readonly store: Store<AppState>
+    private readonly store: Store<AppState>,
   ) {}
 
   ngOnInit(): void {
@@ -45,12 +48,17 @@ export class ChooseWorkoutComponent {
     this.router.navigateByUrl('workout');
   }
 
-  startChosenWorkout(program: Program): void {
+  openDialog(program: Program, enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.store.dispatch(
       SetChosenProgram({
         chosenProgram: program
       })
     )
-    this.router.navigateByUrl('workout/in-progress');
+
+    this.dialog.open(DialogAnimationsExampleDialog, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    })
   }
 }
