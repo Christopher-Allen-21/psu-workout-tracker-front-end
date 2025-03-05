@@ -1,0 +1,12 @@
+// For MatDialog
+.mat-mdc-dialog-title {
+    text-align: center;
+}
+
+::ng-deep .mat-mdc-dialog-container-with-actions .mat-mdc-dialog-content {
+    text-align: center;
+}
+
+::ng-deep .mat-mdc-dialog-actions {
+    justify-content: center;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Program } from '../../models/program';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -16,31 +16,30 @@ import { Workout } from '../../models/workout';
 import { WorkoutHistory } from '../../models/workoutHistory';
 import { DatePipe } from '@angular/common';
 import { User } from '../../models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { DontSaveWorkoutPopupComponent } from './dont-save-workout-popup/dont-save-workout-popup.component';
+import { SaveWorkoutPopupComponent } from './save-workout-popup/save-workout-popup.component';
 
 @Component({
   selector: 'choose-exercise',
   imports: [ReplaceNullPipe],
-  providers: [DatePipe],
   templateUrl: './choose-exercise.component.html',
   styleUrl: './choose-exercise.component.scss'
 })
 export class ChooseExerciseComponent {
   baseUrl: string = 'https://psu-workout-tracker-backend-b9f46449d11d.herokuapp.com/'
+  readonly dialog = inject(MatDialog)
   program: Program = null
   workouts: Workout[] = []
   exercises: Exercise[] = []
   completedExercises: Exercise[] = []
   user: User
-  currentDate: string
 
   constructor(
     private router: Router, 
     private readonly httpClient: HttpClient,
     private readonly store: Store<AppState>,
-    private datePipe: DatePipe
-  ) {
-    this.currentDate = this.datePipe.transform(new Date(), 'yyyy/MM/dd');
-  }
+  ) {}
 
   ngOnInit(): void {
     this.store.select(selectCurrentUser).subscribe((data) => {
@@ -87,11 +86,6 @@ export class ChooseExerciseComponent {
     return false
   }
 
-  returnToChooseProgram(): void {
-    this.store.dispatch(ClearCompletedExercises())
-    this.router.navigateByUrl('workout/selectProgram')
-  }
-
   addCompletedExercise(exercise: Exercise): void {
 
     // need to implement something for when they remove check mark
@@ -113,27 +107,22 @@ export class ChooseExerciseComponent {
     this.router.navigateByUrl('workout/exercise')
   }
 
-  saveWorkout(): void {
-    let url = this.baseUrl + 'workout-history/'
-    
-    let request: WorkoutHistory = {
-      pk: this.datePipe.transform(new Date(), 'yyyyMMdd') + '#' + this.program.name,
-      sk: this.datePipe.transform(new Date(), 'yyyyMMdd') + '#' + this.program.name,
-      dateOfWorkout:  this.currentDate,
-      exercises: [],
-      feeling: "Mid",
-      program: this.program.pk,
-      userId: this.user.pk,
-      duration: 0,
-    }
-
-    this.httpClient.post(url, request, {observe: 'response'}).subscribe({
-      next: (res) => {
-        alert("Response status code: " + JSON.stringify(res.status) + "\nWorkout History created successfully")
-      }
+  openDontSaveDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DontSaveWorkoutPopupComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
     })
-
-    this.returnToChooseProgram()
   }
+
+  openSaveDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(SaveWorkoutPopupComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    })
+  }
+
+
 
 }
