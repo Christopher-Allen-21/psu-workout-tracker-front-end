@@ -4,6 +4,7 @@
     border-collapse: collapse;
     width: 100%;
     border: 1px solid $base-color;
+    overflow: auto;
 }
 
 tbody td, .programsTable th, .createUpdateUserTable th {

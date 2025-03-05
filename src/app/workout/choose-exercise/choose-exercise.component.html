@@ -6,8 +6,15 @@
 </div>
 
 <div class="sub-header-container">
+    <b>{{ program.name }}</b>
+</div>
+
+<div class="sub-header-container">
+    <div style="margin: 1% 0 0 0">{{ program.description }}</div>
+</div>
+
+<div class="sub-header-container">
     <span>
-        <b>{{program.name}}</b>
         <table class="programsTable">
             <thead>
                 <tr>
@@ -19,7 +26,12 @@
             <tbody>
                 @for(exercise of exercises; track exercise) {
                     <tr>
-                        <td><input [checked]="isExerciseCompleted(exercise)" type="checkbox"></td>
+                        <td>
+                            <input 
+                            [checked]="isExerciseCompleted(exercise)" 
+                            type="checkbox"
+                            (change)="addCompletedExercise(exercise)">
+                        </td>
                         <td (click)="startChosenExercise(exercise)">{{ exercise.name | replaceNull }}</td>
                         <td (click)="startChosenExercise(exercise)">{{ exercise.bodyArea | replaceNull }}</td>
                     </tr>

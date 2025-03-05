@@ -11,7 +11,7 @@ import {
   selectCompletedExercises, 
   selectCurrentUser
 } from '../../store/app.selector';
-import { ClearCompletedExercises, SetChosenWorkoutAndExercise } from '../../store/app.action';
+import { AddCompletedExercise, ClearCompletedExercises, SetChosenWorkoutAndExercise } from '../../store/app.action';
 import { Workout } from '../../models/workout';
 import { WorkoutHistory } from '../../models/workoutHistory';
 import { DatePipe } from '@angular/common';
@@ -90,6 +90,15 @@ export class ChooseExerciseComponent {
   returnToChooseProgram(): void {
     this.store.dispatch(ClearCompletedExercises())
     this.router.navigateByUrl('workout/selectProgram')
+  }
+
+  addCompletedExercise(exercise: Exercise): void {
+
+    // need to implement something for when they remove check mark
+    
+    this.store.dispatch(AddCompletedExercise({
+      completedExercise: exercise
+    }))
   }
 
   startChosenExercise(exercise: Exercise): void {
