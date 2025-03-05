@@ -2,8 +2,12 @@ import { Exercise } from "../models/exercise"
 import { Program } from "../models/program"
 import { User } from "../models/user"
 import { Workout } from "../models/workout"
+import { WorkoutHistory } from "../models/workoutHistory"
 
 export interface AppState {
+    allPrograms: Program[]
+    workoutHistoryForCurrentUser: WorkoutHistory[]
+
     currentUser: User
     chosenProgram: Program
     chosenWorkout: Workout
@@ -16,6 +20,8 @@ export interface AppState {
 }
 
 export const initialAppState: AppState = {
+    allPrograms: [],
+    workoutHistoryForCurrentUser: [],
     currentUser: {
         "pk": "0",
         "sk": "0",

@@ -5,6 +5,21 @@ import { AppState } from "./app.state"
 
 const selectAppState = createFeatureSelector<AppState>('appState')
 
+
+export const selectAllPrograms = createSelector(
+    selectAppState,
+    (state) => {
+        return state.allPrograms
+    }
+)
+
+export const selectWorkoutHistoryForCurrentUser = createSelector(
+    selectAppState,
+    (state) => {
+        return state.workoutHistoryForCurrentUser
+    }
+)
+
 export const selectChosenProgram = createSelector(
     selectAppState,
     (state) => {

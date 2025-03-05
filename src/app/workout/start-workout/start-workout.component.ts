@@ -7,8 +7,8 @@ import { Store } from '@ngrx/store';
 import { WorkoutHistory } from '../../models/workoutHistory';
 import { Program } from '../../models/program';
 import { ReplaceNullPipe } from '../../utilities/pipes/replace-null.pipe';
-import { selectCurrentUser, selectStartWorkoutStats } from '../../store/app.selector';
-import { SetSetsAndReps, SetTopAndBottomPrograms } from '../../store/app.action';
+import { selectAllPrograms, selectCurrentUser, selectStartWorkoutStats, selectWorkoutHistoryForCurrentUser } from '../../store/app.selector';
+import { SetAllPrograms, SetSetsAndReps, SetTopAndBottomPrograms, SetWorkoutHistoryForCurrentUser } from '../../store/app.action';
 
 @Component({
   selector: 'app-start-workout',
@@ -52,18 +52,40 @@ export class StartWorkoutComponent {
   getWorkoutHistoryByUser(): void {
     let url: string = this.baseUrl + 'workout-history/user/' + this.user.pk
 
-    this.httpClient.get<WorkoutHistory[]>(url).subscribe(res => {
-      let responseObject = {...res}
-      this.workoutHistory = responseObject['Items']
+    this.store.select(selectWorkoutHistoryForCurrentUser).subscribe((data) => {
+      this.workoutHistory = data
+
+      if(this.workoutHistory.length === 0) {
+        this.httpClient.get<WorkoutHistory[]>(url).subscribe(res => {
+          let responseObject = {...res}
+          this.workoutHistory = responseObject['Items']
+        })
+
+        this.store.dispatch(SetWorkoutHistoryForCurrentUser({
+          workoutHistoryForCurrentUser: this.workoutHistory
+        }))
+      }
     })
+
+
   }
 
   getPrograms(): void {
     let url: string = this.baseUrl + 'programs/'
 
-    this.httpClient.get<Program[]>(url).subscribe(res => {
-      let responseObject = {...res}
-      this.programs = responseObject['Items']
+    this.store.select(selectAllPrograms).subscribe((data) => {
+      this.programs = data
+
+      if(this.programs.length === 0) {
+        this.httpClient.get<Program[]>(url).subscribe(res => {
+          let responseObject = {...res}
+          this.programs = responseObject['Items']
+        })
+
+        this.store.dispatch(SetAllPrograms({
+          allPrograms: this.programs
+        }))
+      }
     })
   }
   
